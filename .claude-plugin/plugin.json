@@ -1,7 +1,7 @@
 {
   "name": "productupgrade",
-  "description": "The ultimate product upgrade pipeline — 25 agents, 4 commands (/productupgrade, /auto-swarm, /ultra-upgrade, /productupgrade-update), 7-layer prompt composition, multi-model judge tribunal, adversarial red-teaming, Reflexion memory, and recursive convergence engine",
-  "version": "4.0.0",
+  "description": "The ultimate product upgrade pipeline — 29 agents, 4 commands, 16 prompt layers, multi-model tribunal, AutoResearchClaw research pipeline, 734-skill security hardener, PIVOT/REFINE/PROCEED decision loops, MetaClaw cross-run learning, and recursive convergence engine",
+  "version": "4.1.0",
   "author": {
     "name": "Shaheer Khawaja",
     "email": "shaheer@entropyandco.com"

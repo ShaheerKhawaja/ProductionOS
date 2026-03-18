@@ -1,5 +1,24 @@
 # Changelog
 
+## [4.1.0] - 2026-03-18
+
+### Added
+
+- **`research-pipeline` agent** — 8-phase autonomous research engine inspired by AutoResearchClaw. Multi-source literature discovery (arxiv, Semantic Scholar, OpenAlex), 4-layer citation verification, hypothesis generation via multi-agent debate, autonomous PIVOT/REFINE/PROCEED decision loops, and knowledge archival with cross-session memory.
+- **`security-hardener` agent** — Comprehensive security audit grounded in 734 cybersecurity skills from Anthropic-Cybersecurity-Skills. 7-domain audit: OWASP Top 10 2025, MITRE ATT&CK mapping, NIST CSF 2.0 alignment, secret detection (gitleaks/trufflehog patterns), supply chain audit, container security, and DevSecOps pipeline verification.
+- **`decision-loop` agent** — Autonomous PIVOT/REFINE/PROCEED decision maker inspired by AutoResearchClaw Stage 15. Evaluates iteration metrics (grade, delta, velocity, failure rate) and autonomously decides whether to continue, adjust focus, or fundamentally change strategy. Artifact versioning before decisions.
+- **`metaclaw-learner` agent** — Cross-run learning system inspired by AutoResearchClaw MetaClaw (+18.3% robustness). Extracts structured lessons from pipeline execution, converts to reusable rules with 30-day time-decay, injects into future runs. 6 lesson categories, confidence scoring, metrics dashboard.
+
+### Changed
+
+- **`self-healer` agent** — Enhanced with AutoResearchClaw's 10-round iterative healing (up from 3), NaN/Infinity fast-fail detection, AST validation before commit, and partial result capture on timeout.
+- Plugin version bumped to 4.1.0 (29 agents).
+
+### Sources
+
+- [AutoResearchClaw](https://github.com/aiming-lab/AutoResearchClaw) — 23-stage autonomous research pipeline
+- [Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills) — 734 cybersecurity skills, MITRE/NIST/OWASP mapped
+
 ## [4.0.0] - 2026-03-18
 
 ### Added

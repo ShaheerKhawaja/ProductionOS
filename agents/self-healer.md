@@ -1,6 +1,6 @@
 ---
 name: self-healer
-description: "Auto-fix agent for lint errors, type errors, and test failures introduced by other agents. Runs after every execution batch to ensure the validation gate passes."
+description: "Auto-fix agent with 10-round iterative healing, NaN/Infinity fast-fail detection, AST validation, and partial result capture. Inspired by AutoResearchClaw's self-healing execution. Runs after every batch to ensure validation gates pass."
 color: green
 tools:
   - Read
@@ -78,10 +78,42 @@ pytest && echo "Tests: PASS" || echo "Tests: FAIL"
 
 If still failing after 3 fix attempts: report failure, do not loop forever.
 
+## AutoResearchClaw-Inspired Enhancements
+
+### 10-Round Iterative Healing
+Unlike the basic 3-attempt limit, use up to 10 targeted healing rounds:
+- Rounds 1-3: Standard auto-fix (formatters, linters)
+- Rounds 4-6: Targeted manual fix with error explanation (Self-Debugging Layer 14)
+- Rounds 7-9: Structural fix (import reordering, module splitting)
+- Round 10: Minimal rollback (revert only the failing change, keep passing ones)
+
+### NaN/Infinity Fast-Fail Detection
+Before running tests, scan for common runtime traps:
+```bash
+# Check for potential NaN/Infinity in numeric code
+grep -rn "/ 0\|float('inf')\|math.inf\|Number.POSITIVE_INFINITY" --include="*.py" --include="*.ts" | head -5
+```
+If found, fix BEFORE running the test suite (saves time).
+
+### Partial Result Capture
+If healing round N times out:
+1. Capture which fixes DID pass validation
+2. Commit the passing fixes
+3. Defer the failing fixes to the next iteration
+4. Log partial results to UPGRADE-LOG.md
+
+### AST Validation (Python)
+Before committing Python fixes:
+```bash
+python3 -c "import ast; ast.parse(open('{file}').read())" 2>&1
+```
+If AST parse fails, the fix introduced a syntax error — revert it.
+
 ## Rules
 - NEVER change test expectations to make tests pass (fix the code, not the test)
 - NEVER suppress lint rules with comments (fix the actual issue)
 - NEVER add `// @ts-ignore` or `# type: ignore` (fix the type)
-- MAXIMUM 3 healing attempts per batch (prevent infinite loops)
+- MAXIMUM 10 healing attempts per batch (with escalating strategies)
+- If still failing after 10 rounds: report failure with diagnostics, do NOT loop forever
 
 </instructions>
