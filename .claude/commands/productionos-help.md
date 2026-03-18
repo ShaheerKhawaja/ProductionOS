@@ -9,6 +9,10 @@ description: "Show how to use ProductionOS — explains commands, recommended wo
 
 ProductionOS is an agentic development operating system with 35 agents and 13 commands. Here's how to use it effectively.
 
+## Step 0: Preamble
+
+All ProductionOS commands run the shared preamble (`templates/PREAMBLE.md`) before execution. This includes environment check, prior work discovery, agent resolution, and prompt injection defense.
+
 ## Quick Reference
 
 ```

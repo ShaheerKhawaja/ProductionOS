@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ProductUpgrade — Source Code Puller
+# ProductionOS — Source Code Puller
 # Clones a repo and generates a Repomix-style analysis
 # Usage: ./pull-source.sh https://github.com/owner/repo [output_dir]
 
@@ -11,7 +11,7 @@ OUTPUT_DIR="${2:-.productionos/sources/$REPO_NAME}"
 
 mkdir -p "$OUTPUT_DIR"
 
-echo "=== ProductUpgrade Source Puller ==="
+echo "=== ProductionOS Source Puller ==="
 echo "Repo: $REPO_URL"
 echo "Output: $OUTPUT_DIR"
 

@@ -18,7 +18,7 @@ mkdir -p "$OUTPUT_DIR"
 # Arxiv API endpoint
 ARXIV_API="http://export.arxiv.org/api/query"
 
-# Default queries for ProductUpgrade research
+# Default queries for ProductionOS research
 QUERIES=(
   "prompt+engineering+techniques+2025+2026"
   "chain+of+thought+reasoning+LLM"
@@ -35,7 +35,7 @@ QUERIES=(
 )
 
 echo "╔══════════════════════════════════════════╗"
-echo "║    ARXIV PAPER SCRAPER — ProductUpgrade   ║"
+echo "║    ARXIV PAPER SCRAPER — ProductionOS   ║"
 echo "╚══════════════════════════════════════════╝"
 echo ""
 
@@ -112,5 +112,5 @@ echo "Total files: $(ls ${OUTPUT_DIR}/*.md 2>/dev/null | wc -l)"
 echo ""
 echo "Next steps:"
 echo "  1. Review papers in ${OUTPUT_DIR}/"
-echo "  2. Identify techniques not in ProductUpgrade"
+echo "  2. Identify techniques not in ProductionOS"
 echo "  3. Add new prompt layers to prompts/"

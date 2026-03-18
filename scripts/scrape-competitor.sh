@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ProductUpgrade — Competitor UX Scraper
+# ProductionOS — Competitor UX Scraper
 # Uses Playwright to capture screenshots and extract design patterns
 # Usage: ./scrape-competitor.sh https://competitor.com [output_dir]
 
@@ -10,7 +10,7 @@ OUTPUT_DIR="${2:-.productionos/competitors/$(echo "$URL" | sed 's/https\?:\/\///
 
 mkdir -p "$OUTPUT_DIR"
 
-echo "=== ProductUpgrade Competitor Scraper ==="
+echo "=== ProductionOS Competitor Scraper ==="
 echo "URL: $URL"
 echo "Output: $OUTPUT_DIR"
 

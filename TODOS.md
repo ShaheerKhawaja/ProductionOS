@@ -134,8 +134,8 @@ Organized by priority. P0 = critical, P4 = nice-to-have.
 **Source:** arXiv 2509.16444
 **Effort:** M
 
-#### Harness self-audit (`/productupgrade audit-self`)
-**What:** ProductUpgrade audits its own agent definitions and settings.
+#### Harness self-audit (`/productionos audit-self`)
+**What:** ProductionOS audits its own agent definitions and settings.
 **Source:** ECC AgentShield `security-scan`
 **Effort:** M
 

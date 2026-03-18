@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ProductUpgrade — GUI Audit
+# ProductionOS — GUI Audit
 # Screenshots all routes, runs Lighthouse, checks accessibility
 # Usage: ./gui-audit.sh http://localhost:3000 [output_dir]
 
@@ -10,7 +10,7 @@ OUTPUT_DIR="${2:-.productionos/gui-audit}"
 
 mkdir -p "$OUTPUT_DIR/screenshots" "$OUTPUT_DIR/lighthouse"
 
-echo "=== ProductUpgrade GUI Audit ==="
+echo "=== ProductionOS GUI Audit ==="
 echo "URL: $BASE_URL"
 echo "Output: $OUTPUT_DIR"
 
@@ -91,7 +91,7 @@ const ROUTES = ['/', '/generate', '/dashboard', '/studio', '/settings', '/settin
 AUDIT_SCRIPT
 
 # Run the audit
-npx playwright install chromium --with-deps 2>/dev/null || true
+npx playwright install chromium --with-deps || echo "INFO: Playwright install skipped"
 node "$OUTPUT_DIR/_audit.js" "$BASE_URL" "$OUTPUT_DIR" 2>/dev/null || {
   echo "Warning: Playwright audit failed. The app may not be running at $BASE_URL"
 }
@@ -103,7 +103,7 @@ if command -v npx &>/dev/null; then
     --output=json --output-path="$OUTPUT_DIR/lighthouse/report.json" \
     --chrome-flags="--headless --no-sandbox" \
     --only-categories=performance,accessibility,best-practices,seo \
-    2>/dev/null || echo "Lighthouse audit skipped (not available)"
+    || echo "INFO: Lighthouse audit skipped (not available)"
 fi
 
 echo "=== GUI Audit complete: $OUTPUT_DIR ==="

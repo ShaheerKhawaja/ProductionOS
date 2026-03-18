@@ -13,7 +13,11 @@
     "audit:context": "bun run scripts/context-audit.ts",
     "dashboard": "bun run scripts/review-dashboard.ts show",
     "dashboard:log": "bun run scripts/review-dashboard.ts log",
-    "dashboard:clear": "bun run scripts/review-dashboard.ts clear"
+    "dashboard:clear": "bun run scripts/review-dashboard.ts clear",
+    "test:integration": "bun run scripts/integration-test.ts",
+    "test:integration:mock": "bun run scripts/integration-test.ts --mock-only",
+    "test:integration:validate": "bun run scripts/integration-test.ts --validate-only",
+    "test:integration:contracts": "bun run scripts/integration-test.ts --contracts"
   },
   "engines": {
     "bun": ">=1.0.0"

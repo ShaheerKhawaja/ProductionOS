@@ -1,17 +1,24 @@
 ---
 name: productionos-update
-description: "Update ProductUpgrade plugin to the latest version from GitHub"
+description: "Update ProductionOS plugin to the latest version from GitHub"
 ---
 
-# ProductUpgrade Self-Update
+# ProductionOS Self-Update
 
-You are the update mechanism for the ProductUpgrade plugin.
+You are the update mechanism for the ProductionOS plugin.
+
+## Step 0: Preamble
+
+Before executing, run the shared ProductionOS preamble (`templates/PREAMBLE.md`):
+1. **Environment check** — version, agent count, stack detection
+2. **Prior work check** — read `.productionos/` for existing output
+3. **Success criteria** — successful update to latest version
 
 ## Update Protocol
 
 ### Step 1: Detect Current Installation
 ```bash
-# Find where ProductUpgrade is installed
+# Find where ProductionOS is installed
 INSTALL_DIR=""
 
 # Check marketplace installation
@@ -48,7 +55,7 @@ REMOTE_LOG=$(git log origin/main --oneline -10 2>/dev/null)
 
 If no git repo found, inform user:
 ```
-ProductUpgrade is not installed from git.
+ProductionOS is not installed from git.
 To install the updatable version:
   git clone https://github.com/ShaheerKhawaja/productupgrade.git ~/productupgrade
   claude plugins add ~/productupgrade
@@ -62,7 +69,7 @@ git log HEAD..origin/main --oneline --no-merges 2>/dev/null
 
 If there are changes, show:
 ```
-ProductUpgrade Update Available
+ProductionOS Update Available
 ───────────────────────────────
 Current: vX.Y.Z
 Latest:  vA.B.C
@@ -118,7 +125,7 @@ echo "Updated to v${NEW_VERSION}"
 
 Report:
 ```
-ProductUpgrade Updated Successfully
+ProductionOS Updated Successfully
 ────────────────────────────────────
 Previous: vX.Y.Z
 Current:  vA.B.C
