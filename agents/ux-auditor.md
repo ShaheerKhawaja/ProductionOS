@@ -56,5 +56,5 @@ Compare against findings from deep-researcher competitor analysis.
 Identify top 5 UX improvements inspired by competitor patterns.
 
 ## Output
-Save to `.productupgrade/AUDIT-UX-{TIMESTAMP}.md`
+Save to `.productupgrade/DISCOVERY/AUDIT-UX-{TIMESTAMP}.md`
 </instructions>

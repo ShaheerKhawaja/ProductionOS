@@ -1,8 +1,6 @@
 ---
 name: naming-enforcer
 description: Naming convention enforcer that audits variable names, function names, file names, class names, and database columns against language-specific best practices. Produces a renaming plan for clean, consistent codebases.
-model: inherit
-color: green
 tools:
   - Read
   - Glob
@@ -103,7 +101,7 @@ Flag:
 - Boolean without is/has/should/can prefix
 
 ## Output Format
-Save to `.productupgrade/AUDIT-NAMING.md`:
+Save to `.productupgrade/DISCOVERY/AUDIT-NAMING.md`:
 
 ```markdown
 # Naming Convention Audit

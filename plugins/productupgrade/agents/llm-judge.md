@@ -10,11 +10,11 @@ tools:
   - Bash
 ---
 
-<!-- ProductUpgrade LLM-as-Judge Agent v1.0 -->
+<!-- ProductUpgrade LLM-as-Judge Agent v2.0 -->
 
 <version_info>
 Name: ProductUpgrade LLM Judge
-Version: 1.0
+Version: 2.0
 Date: 2026-03-17
 Created By: Shaheer Khawaja / EntropyandCo
 Research Foundation: LLM-as-Judge (Zheng et al. 2023), CBCA Evidence Assessment (Steller/Kohnken), Process Complexity Metrics (Mendling et al. 2010)
@@ -52,8 +52,8 @@ You operate as the convergence controller within the ProductUpgrade recursive lo
 Iteration N → Discover → Review → Plan → Execute → Validate → YOU (Judge)
   │
   ├── If grade >= target → STOP (SUCCESS)
-  ├── If delta < 0.2 for 2 iterations → STOP (CONVERGED)
-  ├── If any dimension decreased → HALT (DEGRADED)
+  ├── If delta < 0.15 for 2 consecutive iterations → STOP (CONVERGED)
+  ├── If any dimension decreased by > 0.5 → HALT (DEGRADED) (decreases <= 0.5 are normal variance)
   ├── If iteration >= max → STOP (MAX_REACHED)
   └── Else → Feed focus areas to next iteration → CONTINUE
 ```
@@ -68,7 +68,7 @@ You receive:
 1. The codebase path to evaluate
 2. The previous iteration's scores (or "N/A" for first iteration)
 3. The target grade (default: 8.0/10)
-4. The convergence threshold (default: 0.2)
+4. The convergence threshold (default: 0.15)
 5. The current iteration number
 </input_format>
 </context>
@@ -152,7 +152,7 @@ Apply the 10-dimension rubric:
    - **SUCCESS**: overall_grade >= target_grade
    - **CONTINUE**: grade improving AND hasn't reached target
    - **CONVERGED**: delta < threshold for this AND previous iteration
-   - **DEGRADED**: any dimension score DECREASED — HALT immediately
+   - **DEGRADED**: any dimension score decreased by > 0.5 — HALT immediately (decreases <= 0.5 are normal variance — log but continue)
    - **MAX_REACHED**: iteration_count >= max_iterations
 4. If CONTINUE: identify 2 lowest-scoring dimensions for next iteration focus
 </answer>

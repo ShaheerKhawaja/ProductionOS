@@ -1,351 +1,247 @@
 ---
 name: productupgrade
-description: AI-powered product upgrade pipeline — runs 54-agent iterative review with CEO/Engineering/UX/QA parallel loops, LLM-as-judge evaluation, recursive improvement loops, competitor analysis, GUI audit, and end-to-end validation. Use when upgrading, auditing, or improving any product codebase.
+description: "Autonomous self-learning product upgrade pipeline with 20 agents, 3 execution modes (auto/standard/deep), 7-layer prompt composition (CoT+ToT+GoT+CoD+Emotion+Meta+Context), distributed swarm orchestration, and LLM-as-Judge convergence engine. Use when upgrading, auditing, fixing, or improving any product codebase."
 ---
 
-# ProductUpgrade — 54-Agent Recursive Product Improvement Pipeline
+# ProductUpgrade V2.1 — Autonomous Self-Learning Pipeline
 
-A comprehensive skill that orchestrates up to 54 concurrent review agents in recursive iteration loops to systematically audit, improve, and validate any product codebase. Combines CEO strategic review, engineering deep-dive, UX/UI analysis, competitor scraping, automated QA, and **LLM-as-Judge** evaluation with convergence criteria.
+A cognitive architecture that takes any codebase from current state to production-ready using 20 specialized agents, recursive convergence with LLM-as-Judge evaluation, 7-layer composed prompting, and RAG-powered context retrieval across iteration boundaries.
 
 ## When to Use
 
-- `/productupgrade` — Run the full recursive pipeline until convergence
-- `/productupgrade audit` — Run audit-only (no code changes)
-- `/productupgrade ux` — UX/UI focused analysis with competitor scraping
-- `/productupgrade fix` — Fix all findings from a previous audit
-- `/productupgrade validate` — Run validation-only on recent changes
-- `/productupgrade judge` — Run LLM-as-Judge evaluation only
+- `/productupgrade` — Auto mode: smart agent selection based on codebase complexity
+- `/productupgrade standard` — Proven 6-phase pipeline, recursive convergence, target 8.0
+- `/productupgrade deep` — Full autonomous self-learning engine, 7 loops, target 10.0
+- `/productupgrade audit` — Discovery + evaluation only (no code changes)
+- `/productupgrade fix` — Execute fixes from a previous audit
+- `/productupgrade validate` — Validate recent changes, score AFTER vs BEFORE
+- `/productupgrade judge` — LLM-as-Judge evaluation only (independent, read-only)
+- `/auto-swarm "task"` — Distributed agent swarm for any research or improvement task
 
-## Core Innovation: Recursive Convergence Loop
+## Architecture Overview
 
-Unlike linear review tools, ProductUpgrade runs in a **recursive loop** that continues until either:
-1. The target grade is reached (configurable, default 8.0/10)
-2. The maximum iteration count is hit (default 7 master iterations)
-3. The grade delta between iterations drops below threshold (< 0.2 improvement = converged)
+### 20 Agents
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                   RECURSIVE CONVERGENCE ENGINE                       │
-│                                                                     │
-│  MASTER LOOP (up to 7 iterations):                                  │
-│  ┌─────────────────────────────────────────────────────────────┐   │
-│  │  Iteration N:                                                │   │
-│  │  1. DISCOVER (7 agents) → scan + scrape + audit              │   │
-│  │  2. REVIEW (7 agents) → CEO + Eng + Design                  │   │
-│  │  3. PLAN (7 agents) → prioritize + spec + TDD               │   │
-│  │  4. EXECUTE (7 agents per batch × up to 7 batches)           │   │
-│  │  5. VALIDATE (5 agents) → test + QA + review                │   │
-│  │  6. JUDGE (LLM-as-Judge) → score all 10 dimensions          │   │
-│  │                                                               │   │
-│  │  ┌─────────────────────────────────────────────┐             │   │
-│  │  │ LLM JUDGE VERDICT:                          │             │   │
-│  │  │ Grade: 6.2/10                               │             │   │
-│  │  │ Target: 8.0/10                              │             │   │
-│  │  │ Delta from last: +0.8                       │             │   │
-│  │  │ Verdict: CONTINUE (grade < target)          │             │   │
-│  │  │ Focus next iteration: Tests, Accessibility  │             │   │
-│  │  └─────────────────────────────────────────────┘             │   │
-│  │                                                               │   │
-│  │  IF grade >= target: STOP (SUCCESS)                          │   │
-│  │  IF delta < 0.2: STOP (CONVERGED)                            │   │
-│  │  IF iteration >= max: STOP (MAX REACHED)                     │   │
-│  │  ELSE: feed findings back → next iteration                   │   │
-│  └──────────────────────────────────────────┬──────────────────┘   │
-│                                              │                       │
-│                                              ▼                       │
-│                                    NEXT ITERATION                    │
-│                              (focused on gaps from judge)            │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
-### Iteration Focus Narrowing
-
-Each iteration, the judge identifies the **2 lowest-scoring dimensions**. The next iteration focuses its 7 review agents and 49 fix agents exclusively on those dimensions. This prevents thrashing and ensures convergence:
-
-```
-Iteration 1: Full scan (all 10 dimensions) → Grade 5.4
-  Judge says: Focus on Tests (4/10) and Accessibility (3/10)
-
-Iteration 2: Focused on Tests + Accessibility → Grade 6.2 (+0.8)
-  Judge says: Focus on Security (5/10) and Observability (5/10)
-
-Iteration 3: Focused on Security + Observability → Grade 6.8 (+0.6)
-  Judge says: Focus on Performance (6/10) and Deployment (6/10)
-
-Iteration 4: Focused on Performance + Deployment → Grade 7.2 (+0.4)
-  Judge says: Focus on UX/UI (7/10) and Documentation (7/10)
-
-Iteration 5: Focused on UX + Docs → Grade 7.6 (+0.4)
-  Judge says: Focus on Error Handling (7/10) and Code Quality (7.5/10)
-
-Iteration 6: Focused on Errors + Quality → Grade 7.9 (+0.3)
-  Judge says: Focus on remaining gaps
-
-Iteration 7: Final polish → Grade 8.1 (+0.2)
-  Judge says: CONVERGED (delta < 0.2). Grade exceeds target.
-```
-
-## LLM-as-Judge Module
-
-The judge is a **separate LLM evaluation** that scores the codebase objectively after each iteration. It is NOT the same model doing the fixes — it's an independent evaluator.
-
-### Judge Protocol
-
-```
-FOR EACH of the 10 dimensions:
-  1. Sample 5 files most relevant to this dimension
-  2. Read each file completely
-  3. Apply the rubric criteria (1-10 scale with specific evidence thresholds)
-  4. Score with justification (evidence from actual code, not assumptions)
-  5. Identify the single highest-impact improvement for next iteration
-
-THEN:
-  6. Compute overall grade (weighted average)
-  7. Compare to previous iteration grade
-  8. Compute delta
-  9. Decide: CONTINUE / CONVERGED / SUCCESS / MAX_REACHED
-  10. If CONTINUE: identify 2 focus dimensions for next iteration
-```
-
-### Judge Prompt Template
-
-```markdown
-You are an expert software quality evaluator. Score this codebase on the following
-dimension using ONLY evidence from the actual code you read. Do not assume — verify.
-
-**Dimension:** {{DIMENSION}}
-**Scale:** 1-10 (see rubric below)
-
-**Files to evaluate:**
-{{FILE_LIST}}
-
-**Rubric:**
-- 1-2: {{CRITERIA_LOW}}
-- 3-4: {{CRITERIA_MED_LOW}}
-- 5-6: {{CRITERIA_MED}}
-- 7-8: {{CRITERIA_MED_HIGH}}
-- 9-10: {{CRITERIA_HIGH}}
-
-**Your evaluation must include:**
-1. Score (integer 1-10)
-2. Three specific code evidence citations (file:line)
-3. One highest-impact improvement suggestion
-4. Confidence level (HIGH/MEDIUM/LOW)
-
-**Previous iteration score:** {{PREV_SCORE}} (or "N/A" for first iteration)
-**Previous iteration feedback:** {{PREV_FEEDBACK}}
-
-Return JSON:
-{
-  "dimension": "{{DIMENSION}}",
-  "score": <int>,
-  "evidence": ["file:line — description", ...],
-  "improvement": "description of highest-impact fix",
-  "confidence": "HIGH|MEDIUM|LOW",
-  "delta": <float or null>
-}
-```
-
-### Judge Independence
-
-The judge MUST be independent from the fix agents. Implementation:
-1. Judge runs as a **separate agent** with read-only access (no Edit/Write tools)
-2. Judge reads files directly, does not rely on agent self-reports
-3. Judge uses `sequential-thinking` MCP for structured reasoning
-4. Judge output is saved to `.productupgrade/JUDGE-ITERATION-{N}.md`
-
-## Phase-by-Phase Detail
-
-### Phase 1: DISCOVERY (7 parallel agents)
-
-Launch ALL 7 simultaneously via Agent tool:
-
-| Agent | Task | Tools | Output |
+| Agent | Role | Model | Access |
 |-------|------|-------|--------|
-| 1 | Codebase scan | Glob, Grep, Read, Bash | Architecture map, LOC, churn hotspots |
-| 2 | Dependency audit | Bash (npm audit, pip-audit) | CVE list, outdated packages |
-| 3 | Competitor scrape | scripts/scrape-competitor.sh, /ux-browse | Screenshots, design tokens |
-| 4 | Type safety | Bash (tsc --noEmit, mypy) | Type error list |
-| 5 | API contracts | Grep, Read | Endpoint inventory, schema consistency |
-| 6 | Performance profile | Bash (lighthouse, bundle-analyzer) | Performance metrics |
-| 7 | Security scan | Grep, Read | OWASP findings, secret detection |
+| llm-judge | Independent quality evaluator, convergence control | opus | Read-only |
+| deep-researcher | Techstack/competitor/library research | opus | Read + Web |
+| code-reviewer | Systematic code review with confidence scoring | — | Read-only |
+| ux-auditor | UX/UI audit with a11y and competitor comparison | — | Read + Bash |
+| dynamic-planner | Finding synthesis + prioritized batch planning | — | Read + Write |
+| business-logic-validator | Business rule validation | — | Read-only |
+| dependency-scanner | CVE/license/abandonment scanning | — | Read + Bash |
+| api-contract-validator | Frontend↔Backend contract validation | — | Read-only |
+| naming-enforcer | Cross-layer naming convention audit | — | Read-only |
+| refactoring-agent | Dead code, complexity, duplication | — | Read + Edit |
+| database-auditor | Schema, query, migration audit | — | Read + Bash |
+| adversarial-reviewer | Red-team hostile critique (no code changes) | — | Read-only |
+| thought-graph-builder | Graph of Thought aggregation across iterations | opus | Read + Write |
+| persona-orchestrator | 3-persona evaluation (Technical/Human/Meta) | — | Read-only |
+| density-summarizer | Chain of Density inter-iteration summaries | — | Read + Write |
+| context-retriever | RAG-in-pipeline context management | — | Read + Write |
+| frontend-scraper | Playwright screenshot + Lighthouse capture | — | Read + Bash |
+| vulnerability-explorer | OWASP Top 10 + attack surface mapping | — | Read + Bash |
+| swarm-orchestrator | Distributed swarm coordination | — | All |
+| guardrails-controller | Safety + human-in-the-loop enforcement | — | Read-only |
 
-### Phase 2: STRATEGIC REVIEW (7 parallel conversations)
+### 7-Layer Prompt Composition (Deep/Swarm Mode)
 
-Launch ALL 7 simultaneously. Each invokes a skill:
+Every agent in deep mode receives composed prompts with all 7 layers:
 
-| Agent | Skill | Mode/Pass | Focus |
-|-------|-------|-----------|-------|
-| 1 | /plan-ceo-review | SCOPE EXPANSION | Dream state, 10x vision |
-| 2 | /plan-ceo-review | HOLD SCOPE | Error map, failure modes |
-| 3 | /plan-ceo-review | SCOPE REDUCTION | Minimum viable cut |
-| 4 | /plan-eng-review | Pass 1 | Architecture, data flow |
-| 5 | /plan-eng-review | Pass 2 | Edge cases, deployment |
-| 6 | /frontend-design | Component audit | Design system, a11y |
-| 7 | /backend-patterns | Pattern audit | API design, DB queries |
+1. **Emotion Prompting** — Sets stakes and thoroughness (+8-15% accuracy, Li et al. 2023)
+2. **Meta-Prompting** — Forces reflection on approach and blind spots before action
+3. **Context Retrieval** — RAG from /mem-search + context7 MCP + file artifacts
+4. **Chain of Thought (CoT)** — Step-by-step reasoning: OBSERVE → ANALYZE → IMPACT → SEVERITY → FIX
+5. **Tree of Thought (ToT)** — 3-branch exploration: THE OBVIOUS / THE SYSTEMIC / THE UNEXPECTED
+6. **Graph of Thought (GoT)** — Finding network with edges: CAUSES / BLOCKS / AMPLIFIES / RELATED_TO
+7. **Chain of Density (CoD)** — 3-pass compression: skeletal → evidence-rich → action-loaded
 
-### Phase 3: PLANNING (7 parallel agents)
+### Convergence Engine
 
-| Agent | Task | Skill | Output |
-|-------|------|-------|--------|
-| 1 | Write implementation plan | /superpowers:write-plan | UPGRADE-PLAN.md |
-| 2 | Generate TDD test specs | /test-driven-development | UPGRADE-TESTS.md |
-| 3 | Plan migrations | /deployment-patterns | UPGRADE-MIGRATION.md |
-| 4 | Design UX improvements | /frontend-design | UX mockups + specs |
-| 5 | Optimize backend patterns | /backend-patterns | Refactor specs |
-| 6 | Code review baseline | /code-review | Baseline findings |
-| 7 | Priority ranking | (direct) | P0/P1/P2/P3 matrix |
-
-### Phase 4: EXECUTION (7 batches × 7 agents = 49 max)
-
-```python
-for batch in range(1, 8):  # Up to 7 batches
-    fixes = select_next_7_independent_fixes(plan)
-    if not fixes:
-        break
-
-    # Launch 7 parallel fix agents
-    agents = []
-    for fix in fixes:
-        agent = launch_agent(
-            task=f"Fix: {fix.title}",
-            context=f"Finding: {fix.description}\nPlan: {fix.plan}\nFiles: {fix.files}",
-            tools=["Read", "Edit", "Write", "Bash", "Grep", "Glob"],
-        )
-        agents.append(agent)
-
-    # Wait for all agents
-    results = await_all(agents)
-
-    # Validation gate
-    lint_ok = run("bun run lint") and run("uvx ruff check .")
-    type_ok = run("npx tsc --noEmit")
-    test_ok = run("pytest") or run("bun test")
-
-    if lint_ok and type_ok and test_ok:
-        git_commit(f"fix(productupgrade): batch {batch} — {len(fixes)} fixes")
-    else:
-        # Self-heal: fix lint/type errors
-        self_heal_agent = launch_agent(task="Fix lint and type errors")
-        await self_heal_agent
-        git_commit(f"fix(productupgrade): batch {batch} — {len(fixes)} fixes (healed)")
-```
-
-### Phase 5: VALIDATION (5 parallel agents)
-
-| Agent | Task | Tool/Skill |
-|-------|------|------------|
-| 1 | Code review all changes | /code-review |
-| 2 | QA test affected pages | /gstack qa |
-| 3 | Run full test suite | Bash (pytest, bun test) |
-| 4 | Performance comparison | Bash (lighthouse before/after) |
-| 5 | CEO re-review | /plan-ceo-review HOLD SCOPE |
-
-### Phase 6: LLM-AS-JUDGE (1 agent, 10 evaluations)
-
-The judge agent evaluates all 10 dimensions independently, then produces:
-- Per-dimension score with evidence
-- Overall grade
-- Delta from previous iteration
-- Verdict: CONTINUE / CONVERGED / SUCCESS / MAX_REACHED
-- If CONTINUE: 2 focus dimensions for next iteration
-
-Output: `.productupgrade/JUDGE-ITERATION-{N}.md`
-
-## Convergence Criteria
+The pipeline runs in a recursive loop controlled by the LLM-as-Judge:
 
 ```
-SUCCESS:    overall_grade >= target_grade (default 8.0)
-CONVERGED:  delta < convergence_threshold (default 0.2) for 2 consecutive iterations
-MAX_REACHED: iteration_count >= max_iterations (default 7)
-DEGRADED:   any dimension score decreased — HALT and investigate
+Iteration N → UNDERSTAND → ENRICH → EVALUATE → FIX → VERIFY → LEARN → CONVERGE
+  │
+  ├── SUCCESS:      grade >= target_grade
+  ├── CONVERGED:    delta < 0.15 for 2 consecutive iterations
+  ├── MAX_REACHED:  iteration >= max_iterations
+  ├── DEGRADED:     any dimension decreased by > 0.5 → HALT, rollback, investigate
+  │                 (decreases <= 0.5 are normal variance — log but continue)
+  ├── OSCILLATION:  dimension went up-down-up (3+ direction changes) → lock, focus elsewhere
+  └── CONTINUE:     feed 2 weakest dimensions to next iteration
 ```
 
-## Configuration
+## Three Execution Modes
 
-```yaml
-# .productupgrade.yml
-target: .
-competitors:
-  - https://competitor1.com
-  - https://competitor2.com
+### Auto Mode (`/productupgrade` or `/productupgrade auto`)
+- Analyzes codebase in 30 seconds (tech stack, LOC, complexity)
+- Dynamically selects only relevant agents
+- No recursive loops — single pass with parallel execution
+- Complexity classification: S (<500 LOC) → 3 agents, M (500-5K) → 7 agents, L (5K-50K) → full pipeline 3 iterations, XL (50K+) → escalate to deep
 
-# Recursive loop settings
-max_iterations: 7          # Master loop iterations
-target_grade: 8.0          # Stop when this grade is reached
-convergence_threshold: 0.2 # Stop when improvement < this
-batch_size: 7              # Agents per execution batch
-max_agents: 54             # Maximum concurrent agents
+### Standard Mode (`/productupgrade standard`)
+- Proven 6-phase pipeline: DISCOVER → REVIEW → PLAN → EXECUTE → VALIDATE → JUDGE
+- Enhanced with context7 library verification, CoD summaries, and Emotion Prompting on judge
+- Target grade: 8.0/10 (configurable)
+- Max 7 iterations, up to 54 agent dispatches per iteration
 
-# Judge settings
-judge:
-  model: opus              # Use strongest model for judging
-  samples_per_dimension: 5 # Files to sample per dimension
-  require_evidence: true   # Must cite file:line for each score
+### Deep Mode (`/productupgrade deep`)
+- Full autonomous self-learning engine
+- 7 progressive loops: UNDERSTAND → ENRICH → EVALUATE → FIX → VERIFY → LEARN → CONVERGE
+- All 7 prompt composition layers active on every agent
+- Virtualized evaluation personas (Technical, Human Impact, Meta-Reasoning)
+- Reflexion memory for cross-iteration learning
+- Dynamic /plan ↔ /code-review cycling with anti-thrash (max 3 switches)
+- Target grade: 10.0 ALWAYS
+- Iterations 6-7 require human approval
 
-# Focus areas (empty = all)
-focus: []
+### Sub-Modes
+- `audit` — UNDERSTAND + EVALUATE only (no code changes)
+- `fix` — Execute fixes from `.productupgrade/EXECUTION/UPGRADE-PLAN.md`
+- `validate` — VERIFY only on recent changes
+- `judge` — Independent LLM-as-Judge scoring only
 
-# Auto-fix settings
-auto_fix: true
-commit_per_batch: true
+## 10-Dimension Evaluation Rubric
 
-rubric:
-  min_grade: 7.0
-  fail_dimensions:
-    - security
-    - code_quality
+| Dimension | 1-2 | 3-4 | 5-6 | 7-8 | 9-10 |
+|-----------|-----|-----|-----|-----|------|
+| Code Quality | Bugs | Works | Clean | Elegant | Exemplary |
+| Security | CVEs | Basic | OWASP | Pen-tested | Hardened |
+| Performance | Slow | OK | Fast | Optimized | Edge-optimized |
+| UX/UI | Ugly | Functional | Good | Polished | Delightful |
+| Test Coverage | 0% | 30% | 60% | 80% | 95%+ |
+| Accessibility | None | Some | AA | AAA | AAA+Audit |
+| Documentation | None | README | API docs | Full | Interactive |
+| Error Handling | Crash | Catch | Log | Recovery | Self-heal |
+| Observability | None | Logs | Metrics | Tracing | Dashboards |
+| Deployment Safety | YOLO | CI | CD | Canary | Blue-green |
+
+## Adaptive Toolchain Detection
+
+The validation gate uses detected commands, NOT hardcoded ones:
+
+```
+IF package.json:  lint=scripts.lint, test=scripts.test, type=tsc --noEmit
+IF pyproject.toml: lint=ruff check, test=pytest, type=mypy
+IF go.mod:        lint=go vet, test=go test, type=(build IS type check)
+IF Cargo.toml:    lint=cargo clippy, test=cargo test, type=cargo check
+IF none:          SKIP (warn: "No toolchain detected")
 ```
 
-## Output Files
+LOC counting excludes: `node_modules/`, `vendor/`, `__pycache__/`, `.venv/`, `dist/`, `build/`, `.git/`
+
+## Output File Structure (V2)
 
 ```
 .productupgrade/
-├── AUDIT-DISCOVERY.md          # Codebase scan results
-├── AUDIT-COMPETITORS.md        # Competitor UX analysis
-├── AUDIT-GUI.md                # GUI screenshot analysis
-├── REVIEW-CEO.md               # CEO review findings (3 modes)
-├── REVIEW-ENGINEERING.md       # Engineering review findings
-├── REVIEW-DESIGN.md            # Design review findings
-├── RUBRIC-BEFORE.md            # Pre-upgrade evaluation scores
-├── RUBRIC-AFTER.md             # Post-upgrade evaluation scores
-├── UPGRADE-PLAN.md             # Ordered fix plan with dependencies
-├── UPGRADE-TESTS.md            # TDD specs for each fix
-├── UPGRADE-MIGRATION.md        # Breaking changes and rollback
-├── UPGRADE-LOG.md              # Execution log (all batch results)
-├── JUDGE-ITERATION-1.md        # Judge evaluation after iteration 1
-├── JUDGE-ITERATION-2.md        # Judge evaluation after iteration 2
-├── ...                         # Up to JUDGE-ITERATION-7.md
-├── CONVERGENCE-LOG.md          # Grade progression across iterations
-└── VALIDATION-REPORT.md        # Final validation results
+├── DISCOVERY/
+│   ├── AUDIT-DISCOVERY.md
+│   ├── AUDIT-COMPETITORS.md
+│   ├── AUDIT-DEPENDENCIES.md
+│   └── AUDIT-VULNERABILITIES.md
+├── REVIEWS/
+│   ├── REVIEW-CEO-EXPAND.md
+│   ├── REVIEW-CEO-HOLD.md
+│   ├── REVIEW-CEO-REDUCE.md
+│   ├── REVIEW-ENGINEERING-ARCH.md
+│   ├── REVIEW-ENGINEERING-ROBUST.md
+│   ├── REVIEW-CODE.md
+│   ├── REVIEW-UX.md
+│   └── REVIEW-BUSINESS-LOGIC.md
+├── THOUGHT-GRAPHS/
+│   ├── THOUGHT-GRAPH-{N}.md
+│   └── THOUGHT-GRAPH-FINAL.md
+├── ITERATIONS/
+│   └── ITERATION-{N}-SUMMARY.md (CoD dense summaries)
+├── JUDGEMENTS/
+│   ├── JUDGE-ITERATION-{N}.md
+│   └── JUDGE-FINAL.md
+├── EXECUTION/
+│   ├── UPGRADE-PLAN.md
+│   ├── UPGRADE-LOG.md
+│   └── CHECKPOINT-*.md
+├── LEARNING/
+│   ├── AGENT-METRICS.md
+│   ├── DECISION-WEIGHTS.md
+│   ├── CONTEXT-METRICS.md
+│   └── LEARNINGS-*.md
+├── SCREENSHOTS/
+│   ├── before/
+│   └── after/
+├── RUBRIC-BEFORE.md
+├── RUBRIC-AFTER.md
+├── REFLEXION-MEMORY.md
+├── CONVERGENCE-LOG.md
+├── TOOLCHAIN.md
+└── FINAL-REPORT.md
 ```
 
 ## Integrated Skills
 
-Orchestrates all of these existing skills:
+Orchestrates these existing skills in the pipeline:
 - `/plan-ceo-review` — CEO strategic review (3 modes: expansion/hold/reduction)
-- `/plan-eng-review` — Engineering deep-dive review (architecture + robustness)
-- `/superpowers:write-plan` — Implementation planning with checkpoints
+- `/plan-eng-review` — Engineering deep-dive (architecture + robustness)
 - `/code-review` — Code review on all changes
-- `/frontend-design` — Frontend component design and audit
-- `/backend-patterns` — Backend architecture patterns and optimization
-- `/gstack qa` — Automated QA testing with health scoring
+- `/qa` — Automated QA testing with health scoring
 - `/browse` — Headless browser for screenshots and testing
-- `/ux-browse` — UX screenshot capture at multiple breakpoints
-- `/ux-analyze` — Multi-model vision analysis of screenshots
-- `/ux-clone` — Full UX replication pipeline
+- `/ux-browse` / `/ux-analyze` — UX screenshot capture and vision analysis
 - `/test-driven-development` — TDD spec generation
 - `/deployment-patterns` — Migration and deployment planning
-- `/systematic-debugging` — Root cause analysis for complex bugs
-- `/agentic-engineering` — Eval-first agent execution patterns
 - `/dispatching-parallel-agents` — Parallel agent dispatch coordination
+
+### MCP Integrations
+- `context7` — Live library doc verification (every phase)
+- `sequential-thinking` — Structured reasoning (EVALUATE, CONVERGE)
+- `memory` — Persistent knowledge graph across sessions (LEARN, UNDERSTAND)
+- `playwright` — Frontend screenshots and E2E testing (VERIFY)
+
+## /auto-swarm Integration
+
+For tasks requiring distributed research across many sources:
+```
+/auto-swarm "task description" --depth ultra --swarm_size 7 --iterations 11
+```
+
+Research depth scaling:
+- `shallow`: 10 sources/query, 30 total — local codebase only
+- `medium`: 50 sources/query, 250 total — + library docs + memory
+- `deep`: 500 sources/query, 5K total — + web + competitors + papers
+- `ultra`: 2000 sources/query, 10K total — + sub-swarms for sub-topics
 
 ## Anti-Patterns (What NOT to Do)
 
 1. **Never skip the judge.** Every iteration must be scored independently.
 2. **Never let fix agents self-report quality.** The judge reads code directly.
-3. **Never continue if a dimension DECREASED.** Halt and investigate.
+3. **Never continue if a dimension decreased by > 0.5.** HALT and investigate.
 4. **Never batch more than 7 fixes.** Larger batches cause merge conflicts.
 5. **Never skip the validation gate.** Broken code must not be committed.
 6. **Never run the judge with the same model context as the fixer.** Independence is critical.
-7. **Never hardcode iteration count.** Use convergence criteria to stop naturally.
+7. **Never compact without saving a CoD summary first.** Context loss is permanent.
+8. **Never skip the adversarial reviewer in deep mode.** Every fix must survive challenge.
+9. **Never ignore the Human Impact persona.** Technical correctness without user benefit is waste.
+10. **Never target less than the mode's default grade.** Auto adapts, standard=8.0, deep=10.0.
+11. **Never hardcode validation commands.** Use adaptive toolchain detection.
+12. **Never run more than 3 mode switches per iteration.** Anti-thrash protection.
+
+## Guardrails (Non-Negotiable)
+
+### Human-in-the-Loop Checkpoints
+- Pre-launch approval for autonomous operations
+- Pre-commit diff review (unless --auto-commit)
+- Pre-push ALWAYS requires approval
+- Security-critical changes ALWAYS flagged
+- Iteration 3 and 5 checkpoints in deep mode
+- Cost threshold ($5 / 500K tokens) triggers pause
+
+### Safety Boundaries
+- Protected files: .env, keys, certs, production configs
+- Max 15 files per batch, 200 lines per file
+- Automatic rollback on test failure or score regression
+- Scope enforcement: agents cannot modify outside their focus area
+
+### Cost Budgets
+- Session: 2M tokens, 100 agents, 500 web fetches
+- Per iteration: 400K tokens, 14 agents
+- Per swarm agent: 100K tokens, 50 web fetches

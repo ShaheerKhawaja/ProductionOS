@@ -69,5 +69,5 @@ For each direct dependency:
 - Check for suspicious post-install scripts
 
 ### Output
-Save to `.productupgrade/AUDIT-DEPENDENCIES.md`
+Save to `.productupgrade/DISCOVERY/AUDIT-DEPENDENCIES.md`
 </instructions>

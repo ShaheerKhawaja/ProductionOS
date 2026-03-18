@@ -1,8 +1,6 @@
 ---
 name: dependency-scanner
 description: Dependency vulnerability scanner and health checker. Runs npm audit, pip-audit, checks for outdated packages, license conflicts, and abandoned dependencies.
-model: inherit
-color: red
 tools:
   - Read
   - Glob
@@ -71,5 +69,5 @@ For each direct dependency:
 - Check for suspicious post-install scripts
 
 ### Output
-Save to `.productupgrade/AUDIT-DEPENDENCIES.md`
+Save to `.productupgrade/DISCOVERY/AUDIT-DEPENDENCIES.md`
 </instructions>

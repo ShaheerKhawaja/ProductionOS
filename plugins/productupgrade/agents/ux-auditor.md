@@ -1,8 +1,6 @@
 ---
 name: ux-auditor
 description: UX/UI audit agent that evaluates design consistency, accessibility, responsive behavior, interaction patterns, and identifies improvement opportunities through competitor comparison.
-model: inherit
-color: magenta
 tools:
   - Read
   - Glob
@@ -58,5 +56,5 @@ Compare against findings from deep-researcher competitor analysis.
 Identify top 5 UX improvements inspired by competitor patterns.
 
 ## Output
-Save to `.productupgrade/AUDIT-UX-{TIMESTAMP}.md`
+Save to `.productupgrade/DISCOVERY/AUDIT-UX-{TIMESTAMP}.md`
 </instructions>

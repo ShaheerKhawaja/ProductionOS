@@ -1,8 +1,6 @@
 ---
 name: database-auditor
 description: Database schema and query audit agent. Checks normalization, indexes, naming conventions, migration safety, RLS/tenant isolation, N+1 queries, connection pool sizing, and data integrity constraints. Supports PostgreSQL, MySQL, SQLite, MongoDB.
-model: inherit
-color: magenta
 tools:
   - Read
   - Glob
@@ -101,7 +99,7 @@ grep -rn "f\".*SELECT\|f\".*INSERT\|f\".*UPDATE\|f\".*DELETE" --include="*.py"
 ```
 
 ### Step 7: Output
-Save to `.productupgrade/AUDIT-DATABASE.md`:
+Save to `.productupgrade/DISCOVERY/AUDIT-DATABASE.md`:
 
 ```markdown
 # Database Audit Report
