@@ -1,5 +1,42 @@
 # Changelog
 
+## [5.0.0] - 2026-03-18 — ProductionOS
+
+### Breaking Changes
+
+- **Rebranded:** ProductUpgrade → ProductionOS. Plugin name is now `productionos`.
+- **Renamed commands:** `/productupgrade` → `/production-upgrade`, `/ultra-upgrade` → `/omni-plan`, `/productupgrade-update` → `/productionos-update`
+- **Renamed skill directory:** `.claude/skills/productupgrade/` → `.claude/skills/productionos/`
+- Output directory changed from `.productupgrade/` to `.productionos/`
+
+### Added
+
+- **`/omni-plan`** — 13-step orchestrative pipeline with tri-tiered judge panel (Correctness/Practicality/Adversarial), recursive convergence to 9.5/10, CEO→Eng→Design review chain, CLEAR framework evaluation, PIVOT/REFINE/PROCEED decisions, and self-enrichment protocol. Flagship command.
+- **`/deep-research`** — 8-phase autonomous research pipeline with 4-layer citation verification, hypothesis generation, confidence-gated loops (if < 80%, loop deeper), and knowledge archival.
+- **`/agentic-eval`** — Niche-agnostic evaluator using CLEAR v2.0 framework: 6-domain assessment, 8 analysis dimensions, 6-tier source prioritization, evidence strength ratings.
+- **`/security-audit`** — 7-domain security hardening command wrapping the security-hardener agent. OWASP/MITRE/NIST framework support.
+- **`/context-engineer`** — Token-efficient context construction for downstream agents with cross-session persistence via MetaClaw.
+- **`/logic-mode`** — Idea → production plan pipeline. Decomposes business ideas, challenges assumptions, researches competitors, identifies pre/post-production flaws, auto-populates planning documents.
+- **`/learn-mode`** — Interactive code tutor with 5 modes: file/function explanation, concept explanation, codebase walkthrough, error explanation, and BTW context for ad-hoc questions.
+- **Tri-tiered evaluation architecture** — 3 independent judges evaluate at pre-execution AND post-execution gates. Consensus protocol with DEBATE on disagreement.
+- **Self-enrichment protocol** — when tasks exceed current capabilities, the system generates new agent definitions and adds them to the pipeline.
+- **Anti-hallucination measures** — confidence scoring, citation verification, adversarial review, distractor-augmented evaluation, cross-agent disagreement logging.
+- **HANDOFF-PROMPT.md** — comprehensive handoff document for fresh session continuity.
+
+### Research Completed
+
+- **CEO Review** (`.productupgrade/REVIEW-CEO.md`): 7.5/10 engineering, 5/10 product. Top need: `/quick` mode for instant value.
+- **Engineering Review** (`.productupgrade/REVIEW-ENGINEERING.md`): 9 HIGH findings including Bash in read-only agents, undefined tribunal debate, no git state check.
+- **gstack deep analysis**: 15 tools fully mapped with user journey, shared infrastructure (preamble, ELI16, Review Readiness Dashboard), and missing pieces identified.
+- **Orchestration primitives**: Claude Code TaskTool/TeammateTool, spawn backends, task dependencies from Klaassen gist.
+- **gstack TypeScript stack**: 74.8% TS (Bun compiled browser, skill-gen, 3-tier testing) vs ProductionOS 100% markdown.
+
+### Changed
+
+- Plugin version: 4.1.0 → 5.0.0
+- Total commands: 4 → 10
+- Identity: code quality audit tool → agentic development operating system
+
 ## [4.1.0] - 2026-03-18
 
 ### Added
