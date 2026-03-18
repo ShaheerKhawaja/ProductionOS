@@ -29,7 +29,7 @@
 
 ### Changed
 
-- **CLAUDE.md** — rewritten for V5.1 (35 agents, 10 commands, on-demand agent loading, cost budgets)
+- **CLAUDE.md** — rewritten for V5.1 (35 agents, 13 commands, on-demand agent loading, cost budgets)
 - **SKILL.md** — updated with V5.1 agent roster (4 categories: Core, Advanced, V4+, V5.1)
 - **All 29 existing agents** — branding updated from "ProductUpgrade" to "ProductionOS", output paths from `.productupgrade/` to `.productionos/`
 - **hooks/hooks.json** — simplified to clean text banner (removed 268KB ASCII art), removed PostToolUse overhead

@@ -7,7 +7,7 @@ This document explains **why** ProductionOS is built the way it is. For setup an
 | Capability | Status | Notes |
 |------------|--------|-------|
 | 35 agent definitions | IMPLEMENTED | Quality ranges from 60-line stubs to 800-line production protocols |
-| 10 commands | IMPLEMENTED | 3 fully orchestrated, 7 need Step 0 preambles |
+| 13 commands | IMPLEMENTED | 3 fully orchestrated, 7 need Step 0 preambles |
 | TypeScript validation (skill-check, validate-agents) | IMPLEMENTED | 10/10 checks passing |
 | Artifact flow between commands | DESIGNED | Commands don't yet check for existing artifacts before running |
 | Convergence loop for /omni-plan | IMPLEMENTED | Full PIVOT/REFINE/PROCEED with tri-tiered judging |

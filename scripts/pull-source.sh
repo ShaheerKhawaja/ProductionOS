@@ -7,7 +7,7 @@ set -euo pipefail
 
 REPO_URL="${1:?Usage: pull-source.sh <repo_url> [output_dir]}"
 REPO_NAME=$(basename "$REPO_URL" .git)
-OUTPUT_DIR="${2:-.productupgrade/sources/$REPO_NAME}"
+OUTPUT_DIR="${2:-.productionos/sources/$REPO_NAME}"
 
 mkdir -p "$OUTPUT_DIR"
 

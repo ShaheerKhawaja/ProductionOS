@@ -54,7 +54,7 @@ Organized by priority. P0 = critical, P4 = nice-to-have.
 **Effort:** M
 
 #### Cross-session learning via Stop hook
-**What:** Convert REFLEXION-LOG.md insights into persistent learned skills at `~/.productupgrade/learned/`.
+**What:** Convert REFLEXION-LOG.md insights into persistent learned skills at `~/.productionos/learned/`.
 **Source:** ECC continuous-learning
 **Effort:** M
 

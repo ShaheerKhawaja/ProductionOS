@@ -6,7 +6,7 @@
 set -euo pipefail
 
 URL="${1:?Usage: scrape-competitor.sh <url> [output_dir]}"
-OUTPUT_DIR="${2:-.productupgrade/competitors/$(echo "$URL" | sed 's/https\?:\/\///' | sed 's/[\/:]/_/g')}"
+OUTPUT_DIR="${2:-.productionos/competitors/$(echo "$URL" | sed 's/https\?:\/\///' | sed 's/[\/:]/_/g')}"
 
 mkdir -p "$OUTPUT_DIR"
 

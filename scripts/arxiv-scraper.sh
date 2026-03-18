@@ -11,7 +11,7 @@ set -euo pipefail
 
 QUERY="${1:-prompt+engineering+LLM}"
 MAX_RESULTS="${2:-50}"
-OUTPUT_DIR="${3:-.productupgrade/arxiv}"
+OUTPUT_DIR="${3:-.productionos/arxiv}"
 
 mkdir -p "$OUTPUT_DIR"
 

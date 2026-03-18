@@ -58,9 +58,9 @@ Grounds the agent in authoritative documentation and past decisions.
 ```markdown
 Before analyzing code, retrieve relevant context:
 1. Read CLAUDE.md/README.md for project conventions
-2. Check .productupgrade/INTEL-CONTEXT.md for tech stack and past decisions
-3. Check .productupgrade/DENSITY-CUMULATIVE.md for iteration history
-4. Check .productupgrade/REFLEXION-LOG.md for what to avoid
+2. Check .productionos/INTEL-CONTEXT.md for tech stack and past decisions
+3. Check .productionos/DENSITY-CUMULATIVE.md for iteration history
+4. Check .productionos/REFLEXION-LOG.md for what to avoid
 
 Base your analysis on documented facts, not assumptions.
 ```

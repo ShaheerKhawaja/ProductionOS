@@ -1,13 +1,13 @@
 ---
 name: productionos
-description: "ProductionOS 5.1 — 35-agent agentic development OS with 12 commands, nth-iteration recursive orchestration targeting 10/10, tri-tiered evaluation, 7-layer prompt composition, and cross-run learning."
+description: "ProductionOS 5.1 — 35-agent agentic development OS with 13 commands, nth-iteration recursive orchestration targeting 10/10, tri-tiered evaluation, 7-layer prompt composition, and cross-run learning."
 ---
 
 # ProductionOS 5.1
 
 35-agent agentic development OS. Commands load agent specs from `agents/` on-demand.
 
-## Commands (12)
+## Commands (13)
 
 ### Orchestrative (nth-iteration, recursive)
 | Command | Purpose | Agents | Target |

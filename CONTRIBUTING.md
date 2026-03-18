@@ -16,7 +16,7 @@ bun test               # Must pass all tests
 ```
 productupgrade/
 ├── .claude-plugin/           # Plugin manifest + marketplace listing
-├── .claude/commands/         # 10 command definitions (.md)
+├── .claude/commands/         # 13 command definitions (.md)
 ├── .claude/skills/           # Skill definition (SKILL.md)
 ├── agents/                   # 35 agent definitions (.md)
 ├── templates/                # Shared templates (preamble, rubric, convergence)

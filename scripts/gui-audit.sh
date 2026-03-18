@@ -6,7 +6,7 @@
 set -euo pipefail
 
 BASE_URL="${1:?Usage: gui-audit.sh <base_url> [output_dir]}"
-OUTPUT_DIR="${2:-.productupgrade/gui-audit}"
+OUTPUT_DIR="${2:-.productionos/gui-audit}"
 
 mkdir -p "$OUTPUT_DIR/screenshots" "$OUTPUT_DIR/lighthouse"
 

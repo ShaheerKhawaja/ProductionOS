@@ -5,7 +5,7 @@
       "hooks": [
         {
           "type": "command",
-          "command": "echo 'ProductionOS 5.0 — 32 agents | 10 commands | tri-tiered evaluation\n\nCommands:\n  /production-upgrade    Recursive product audit (gstack + superpowers)\n  /omni-plan             13-step orchestrative pipeline\n  /auto-swarm \"task\"     Distributed agent swarm\n  /deep-research         8-phase research pipeline\n  /agentic-eval          CLEAR v2.0 evaluation\n  /security-audit        7-domain security audit\n  /context-engineer      Token-optimized context\n  /logic-mode            Business idea validation\n  /learn-mode            Interactive code tutor\n  /productionos-update   Self-update from GitHub'"
+          "command": "echo 'ProductionOS 5.1 — 35 agents | 13 commands | tri-tiered evaluation\n\nOrchestrative:\n  /omni-plan-nth           Recursive until 10/10 (chains all skills)\n  /auto-swarm-nth \"task\"   Recursive swarm (100% coverage)\n\nPipeline:\n  /omni-plan               13-step orchestrative pipeline\n  /auto-swarm \"task\"       Distributed agent swarm\n  /production-upgrade      Recursive product audit\n\nSpecialized:\n  /deep-research           8-phase research pipeline\n  /agentic-eval            CLEAR v2.0 evaluation\n  /security-audit          7-domain security audit\n  /context-engineer        Token-optimized context\n  /logic-mode              Business idea validation\n  /learn-mode              Interactive code tutor\n  /productionos-update     Self-update from GitHub\n  /productionos-help       Usage guide and workflows'"
         }
       ]
     }

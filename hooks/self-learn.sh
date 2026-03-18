@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-LEARN_DIR="${HOME}/.productupgrade/learned"
+LEARN_DIR="${HOME}/.productionos/learned"
 SESSION_FILE="${LEARN_DIR}/session-$(date +%Y%m%d).jsonl"
 
 mkdir -p "$LEARN_DIR"

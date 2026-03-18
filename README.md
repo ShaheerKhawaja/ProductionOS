@@ -1,6 +1,6 @@
 # ProductionOS
 
-Agentic development operating system for Claude Code — 35 agents, 10 commands, recursive convergence, tri-tiered evaluation, and cross-command artifact flow.
+Agentic development operating system for Claude Code — 35 agents, 13 commands, recursive convergence, tri-tiered evaluation, and cross-command artifact flow.
 
 ## Quick Start
 
