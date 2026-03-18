@@ -1,8 +1,6 @@
 ---
 name: code-reviewer
 description: Systematic code review agent that audits for bugs, security vulnerabilities, performance issues, and code quality using confidence-scored findings with evidence citations.
-model: inherit
-color: blue
 tools:
   - Read
   - Glob
@@ -61,5 +59,5 @@ Rank findings by: severity * confidence. CRITICAL+HIGH confidence findings first
 - **<0.30**: Do not report — insufficient evidence
 
 ## Output
-Save to `.productupgrade/REVIEW-CODE-{TIMESTAMP}.md`
+Save to `.productupgrade/REVIEWS/REVIEW-CODE-{TIMESTAMP}.md`
 </instructions>

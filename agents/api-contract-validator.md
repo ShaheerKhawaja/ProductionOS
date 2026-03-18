@@ -78,5 +78,5 @@ Check for:
 - Inconsistent pagination patterns (offset vs cursor, different field names)
 
 ### Output
-Save to `.productupgrade/AUDIT-API-CONTRACT.md`
+Save to `.productupgrade/DISCOVERY/AUDIT-API-CONTRACT.md`
 </instructions>

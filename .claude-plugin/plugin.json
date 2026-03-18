@@ -1,7 +1,7 @@
 {
   "name": "productupgrade",
-  "description": "54-agent recursive product improvement pipeline with LLM-as-Judge evaluation, CEO/Engineering/UX parallel review loops, competitor analysis, GUI audit, techstack research, and dynamic planning orchestration",
-  "version": "1.0.0",
+  "description": "Autonomous self-learning product upgrade pipeline with 3 modes (auto/standard/deep), 20 agents, auto-swarm distributed orchestration, adaptive research depth (10-10,000 sources), CoT+ToT+GoT+CoD+Emotion+Meta prompting composition, guardrails with human-in-the-loop checkpoints, idea-to-production pipeline",
+  "version": "2.1.0",
   "author": {
     "name": "Shaheer Khawaja",
     "email": "shaheer@entropyandco.com"
@@ -10,11 +10,28 @@
   "repository": "https://github.com/ShaheerKhawaja/productupgrade",
   "keywords": [
     "product-upgrade",
-    "code-review",
+    "autonomous-improvement",
+    "self-learning",
+    "chain-of-thought",
+    "tree-of-thought",
+    "graph-of-thought",
+    "chain-of-density",
+    "emotion-prompting",
+    "meta-prompting",
     "llm-judge",
+    "adversarial-review",
+    "code-review",
     "recursive-improvement",
     "competitor-analysis",
     "ux-audit",
-    "qa-testing"
+    "qa-testing",
+    "rag-pipeline",
+    "reflexion-memory",
+    "auto-swarm",
+    "swarm-intelligence",
+    "guardrails",
+    "human-in-the-loop",
+    "idea-to-production",
+    "adaptive-research-depth"
   ]
 }

@@ -98,7 +98,7 @@ For each critical business rule, ask:
 - What happens on retry? (idempotency of billing charges)
 
 ### Step 5: Output
-Save to `.productupgrade/AUDIT-BUSINESS-LOGIC.md`:
+Save to `.productupgrade/DISCOVERY/AUDIT-BUSINESS-LOGIC.md`:
 
 ```markdown
 # Business Logic Validation Report

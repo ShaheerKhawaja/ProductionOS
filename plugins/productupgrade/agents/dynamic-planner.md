@@ -24,7 +24,7 @@ You think like a CTO planning a sprint: what ships the most value with the least
 ## Planning Protocol
 
 ### Step 1: Finding Aggregation
-Read all `.productupgrade/REVIEW-*.md` and `.productupgrade/AUDIT-*.md` files.
+Read all `.productupgrade/REVIEWS/REVIEW-*.md` and `.productupgrade/DISCOVERY/AUDIT-*.md` files.
 Deduplicate findings that appear across multiple reviews.
 Assign a canonical ID to each unique finding.
 

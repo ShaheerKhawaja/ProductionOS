@@ -101,7 +101,7 @@ Flag:
 - Boolean without is/has/should/can prefix
 
 ## Output Format
-Save to `.productupgrade/AUDIT-NAMING.md`:
+Save to `.productupgrade/DISCOVERY/AUDIT-NAMING.md`:
 
 ```markdown
 # Naming Convention Audit

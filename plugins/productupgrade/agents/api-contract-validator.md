@@ -1,8 +1,6 @@
 ---
 name: api-contract-validator
 description: API contract validation agent that ensures frontend API calls match backend endpoints, request/response types align, error codes are handled, and the API surface is consistent and well-documented.
-model: inherit
-color: blue
 tools:
   - Read
   - Glob
@@ -80,5 +78,5 @@ Check for:
 - Inconsistent pagination patterns (offset vs cursor, different field names)
 
 ### Output
-Save to `.productupgrade/AUDIT-API-CONTRACT.md`
+Save to `.productupgrade/DISCOVERY/AUDIT-API-CONTRACT.md`
 </instructions>

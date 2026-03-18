@@ -1,8 +1,6 @@
 ---
 name: business-logic-validator
 description: Business logic validation agent that audits pricing calculations, approval workflows, state machines, authorization rules, and business rule consistency. Catches the bugs that pass code review but break the business.
-model: inherit
-color: red
 tools:
   - Read
   - Glob
@@ -100,7 +98,7 @@ For each critical business rule, ask:
 - What happens on retry? (idempotency of billing charges)
 
 ### Step 5: Output
-Save to `.productupgrade/AUDIT-BUSINESS-LOGIC.md`:
+Save to `.productupgrade/DISCOVERY/AUDIT-BUSINESS-LOGIC.md`:
 
 ```markdown
 # Business Logic Validation Report

@@ -59,5 +59,5 @@ Rank findings by: severity * confidence. CRITICAL+HIGH confidence findings first
 - **<0.30**: Do not report — insufficient evidence
 
 ## Output
-Save to `.productupgrade/REVIEW-CODE-{TIMESTAMP}.md`
+Save to `.productupgrade/REVIEWS/REVIEW-CODE-{TIMESTAMP}.md`
 </instructions>
