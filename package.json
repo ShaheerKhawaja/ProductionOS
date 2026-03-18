@@ -14,6 +14,7 @@
     "dashboard": "bun run scripts/review-dashboard.ts show",
     "dashboard:log": "bun run scripts/review-dashboard.ts log",
     "dashboard:clear": "bun run scripts/review-dashboard.ts clear",
+    "eval": "bun run scripts/eval-runner.ts",
     "test:integration": "bun run scripts/integration-test.ts",
     "test:integration:mock": "bun run scripts/integration-test.ts --mock-only",
     "test:integration:validate": "bun run scripts/integration-test.ts --validate-only",
