@@ -1,6 +1,6 @@
-# ProductionOS 5.1 — Agentic Development Operating System
+# ProductionOS 5.2 — Agentic Development Operating System
 
-35-agent development OS with 13 commands, 7-layer prompt composition, tri-tiered evaluation, and recursive nth-iteration convergence targeting 10/10.
+35-agent development OS with 14 commands, 7-layer prompt composition, tri-tiered evaluation, recursive nth-iteration convergence targeting 10/10, and nuclear-scale max-research.
 
 ## Commands
 
@@ -15,6 +15,11 @@
 /omni-plan [target]            13-step pipeline with tri-tiered judging
 /auto-swarm "task" [--depth]   Distributed agent swarm (shallow|medium|deep|ultra)
 /production-upgrade [mode]     Recursive product audit (full|audit|ux|fix|validate|judge)
+```
+
+### Nuclear Scale
+```
+/max-research [topic]          500-1000 agents in ONE massive wave — exhaustive research
 ```
 
 ### Specialized
@@ -45,6 +50,9 @@
     ├── /auto-swarm-nth (parallel execution with recursive quality gates)
     │   └── Each agent can invoke: /deep-research, /security-audit, /qa, etc.
     │
+    ├── /max-research (NUCLEAR — 500-1000 agents, single massive wave)
+    │   └── ALL agents deployed simultaneously, synthesis wave after
+    │
     ├── /production-upgrade (structured single-pass audit)
     ├── /deep-research (research on any topic)
     ├── /security-audit (security-focused audit)
@@ -54,14 +62,14 @@
 
 ## Mode Comparison
 
-| Feature | /production-upgrade | /auto-swarm | /omni-plan | /omni-plan-nth |
-|---------|---------------------|-------------|------------|----------------|
-| Purpose | Code audit | Task orchestration | Full pipeline | Recursive perfection |
-| Target | 10/10 | 100% coverage | 10/10 | 10/10 ALL dimensions |
-| Iterations | 7 max | 11 waves max | 7 loops | 20 (configurable) |
-| Can invoke other commands | No | No | Yes (fixed steps) | Yes (ANY command) |
-| Convergence | Grade comparison | Coverage delta | PIVOT/REFINE/PROCEED | Strict per-dimension |
-| Agent limit | 49 | 77 | 147 | 420 (21/iter x 20) |
+| Feature | /production-upgrade | /auto-swarm | /omni-plan | /omni-plan-nth | /max-research |
+|---------|---------------------|-------------|------------|----------------|---------------|
+| Purpose | Code audit | Task orchestration | Full pipeline | Recursive perfection | Exhaustive research |
+| Target | 10/10 | 100% coverage | 10/10 | 10/10 ALL dimensions | Total topic saturation |
+| Pattern | 7 iterations | 11 waves × 7 | 7 loops | 20 iterations | ONE massive wave |
+| Can invoke other commands | No | No | Yes (fixed steps) | Yes (ANY command) | No (research only) |
+| Convergence | Grade comparison | Coverage delta | PIVOT/REFINE/PROCEED | Strict per-dimension | Single-shot + synthesis |
+| Agent limit | 49 | 77 | 147 | 420 (21/iter x 20) | 500-1000 (single wave) |
 
 ## Agent Loading
 

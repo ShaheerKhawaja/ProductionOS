@@ -1,5 +1,26 @@
 # Changelog
 
+## [5.2.0] - 2026-03-18
+
+### Added
+
+- **`/max-research` command** — Nuclear-scale autonomous research pipeline that deploys 500-1000 agents in ONE massive simultaneous wave for exhaustive topic saturation. Features:
+  - Single massive dispatch: all agents launched simultaneously via background Agent tool calls
+  - 10-25 domain decomposition with orthogonal research tracks
+  - Per-agent 7-layer prompt composition (Emotion → Meta → Context → CoT → ToT → GoT → CoD)
+  - Deep-research 8-phase methodology compressed into per-agent instructions
+  - Hierarchical synthesis: per-domain → cross-domain → master report
+  - Mandatory usage warning with resource consumption estimates
+  - Quality gates: 4-layer citation verification, confidence scoring, deduplication
+  - Knowledge archival with reusable context packages for future research
+  - Scale tiers: 500 / 750 / 1000 agents (configurable)
+
+### Changed
+
+- Updated CLAUDE.md to v5.2 with `/max-research` in command registry, orchestration hierarchy, and mode comparison table
+- Added "Nuclear Scale" command category above Specialized commands
+- Updated agent limit comparison: `/max-research` supports 500-1000 agents (single wave) vs `/omni-plan-nth` 420 agents (iterative)
+
 ## [5.1.0] - 2026-03-18
 
 ### Added
