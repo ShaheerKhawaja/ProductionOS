@@ -57,9 +57,11 @@ Invoke `/frontend-design` to audit component consistency, accessibility, respons
 Invoke `/backend-patterns` to audit API design, database queries, error handling patterns.
 
 Wait for all 7 agents to complete. Compile findings into:
-- `.productionos/REVIEW-CEO.md`
-- `.productionos/REVIEW-ENGINEERING.md`
-- `.productionos/REVIEW-DESIGN.md`
+- `.productionos/UPGRADE-REVIEW-CEO.md`
+- `.productionos/UPGRADE-REVIEW-ENGINEERING.md`
+- `.productionos/UPGRADE-REVIEW-DESIGN.md`
+
+**Note:** These use the `UPGRADE-` prefix to avoid collision with `/omni-plan`'s `REVIEW-CEO.md` and `REVIEW-ENGINEERING.md`.
 
 ### Step 2: Evaluation Rubric (Score BEFORE)
 Score the codebase on the 10-dimension rubric (1-10 each):
