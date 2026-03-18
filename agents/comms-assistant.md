@@ -54,7 +54,7 @@ ls package.json bun.lockb yarn.lock pnpm-lock.yaml Pipfile pyproject.toml requir
 
 # Environment configuration
 ls .env.example .env.template .env.sample env.example 2>/dev/null
-grep -rn "process.env\.\|os.environ\|os.getenv\|env::" --include="*.ts" --include="*.tsx" --include="*.py" --include="*.rs" . 2>/dev/null | grep -oP '(process\.env\.\w+|os\.environ\[\x27\w+\x27\]|os\.getenv\(\x27\w+\x27\))' | sort -u | head -30
+grep -rn "process.env\.\|os.environ\|os.getenv\|env::" --include="*.ts" --include="*.tsx" --include="*.py" --include="*.rs" . 2>/dev/null | grep -oE '(process\.env\.\w+|os\.environ\[\x27\w+\x27\]|os\.getenv\(\x27\w+\x27\))' | sort -u | head -30
 
 # Scripts/commands
 cat package.json 2>/dev/null | grep -A 30 '"scripts"'
@@ -297,7 +297,7 @@ git log "$BASE"..HEAD --oneline --no-merges
 
 ```bash
 # Count lines changed
-LINES=$(git diff "$BASE"...HEAD --stat | tail -1 | grep -oP '\d+ insertion' | grep -oP '\d+')
+LINES=$(git diff "$BASE"...HEAD --stat | tail -1 | grep -oE '\d+ insertion' | grep -oE '\d+')
 if [ "$LINES" -gt 500 ]; then
   echo "WARNING: PR is ${LINES} lines — consider splitting"
 fi

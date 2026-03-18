@@ -1,5 +1,5 @@
 ---
-name: productupgrade-update
+name: productionos-update
 description: "Update ProductUpgrade plugin to the latest version from GitHub"
 ---
 
@@ -87,7 +87,7 @@ After pulling, sync to all installation locations:
 ```bash
 # Sync to marketplace plugin directory
 if [ -d "$HOME/.claude/plugins/marketplaces/productupgrade" ]; then
-  rsync -av --delete \
+  rsync -av --update \
     --exclude='.git' \
     --exclude='.productupgrade' \
     "$REPO_DIR/" "$HOME/.claude/plugins/marketplaces/productupgrade/"

@@ -129,7 +129,7 @@ git branch --merged main | grep -v "main\|master\|\*"
 git remote prune origin --dry-run
 
 # Delete merged local branches
-git branch --merged main | grep -v "main\|master\|\*" | xargs -r git branch -d
+git branch --merged main | grep -v "main\|master\|\*" | xargs git branch -d
 ```
 
 ---

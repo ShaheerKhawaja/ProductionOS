@@ -35,7 +35,7 @@ find pages -name "*.tsx" -o -name "*.jsx" 2>/dev/null | \
 
 # React Router (grep for route definitions)
 grep -rn "path=" --include="*.tsx" --include="*.jsx" 2>/dev/null | \
-  grep -oP 'path="[^"]*"' | sed 's/path="//;s/"//' | sort
+  grep -oE 'path="[^"]*"' | sed 's/path="//;s/"//' | sort
 ```
 
 ### Step 2: Screenshot Capture
