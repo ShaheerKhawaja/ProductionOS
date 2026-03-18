@@ -1,20 +1,39 @@
 {
   "name": "productupgrade",
-  "description": "54-agent recursive product improvement pipeline with LLM-as-Judge evaluation, CEO/Engineering/UX parallel review loops, competitor analysis, GUI audit, techstack research, and dynamic planning orchestration",
-  "version": "1.0.0",
+  "description": "The ultimate product upgrade pipeline — 25 agents, 4 commands (/productupgrade, /auto-swarm, /ultra-upgrade, /productupgrade-update), 7-layer prompt composition, multi-model judge tribunal, adversarial red-teaming, Reflexion memory, and recursive convergence engine",
+  "version": "4.0.0",
   "author": {
     "name": "Shaheer Khawaja",
     "email": "shaheer@entropyandco.com"
   },
   "license": "MIT",
+  "homepage": "https://github.com/ShaheerKhawaja/productupgrade",
   "repository": "https://github.com/ShaheerKhawaja/productupgrade",
   "keywords": [
     "product-upgrade",
-    "code-review",
-    "llm-judge",
+    "ultra-upgrade",
+    "auto-swarm",
     "recursive-improvement",
-    "competitor-analysis",
-    "ux-audit",
-    "qa-testing"
+    "llm-judge",
+    "multi-model-tribunal",
+    "adversarial-review",
+    "chain-of-thought",
+    "tree-of-thought",
+    "graph-of-thought",
+    "chain-of-density",
+    "emotion-prompting",
+    "meta-prompting",
+    "constitutional-ai",
+    "reflexion",
+    "self-consistency",
+    "mixture-of-agents",
+    "swarm-intelligence",
+    "guardrails",
+    "human-in-the-loop",
+    "thought-graph",
+    "persona-evaluation",
+    "7-layer-prompt-composition",
+    "convergence-engine",
+    "self-healing"
   ]
 }

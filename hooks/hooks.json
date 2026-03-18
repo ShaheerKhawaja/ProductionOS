@@ -1,0 +1,13 @@
+{
+  "SessionStart": [
+    {
+      "matcher": "startup|resume",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '╔══════════════════════════════════════════════════════════════╗\n║  ██████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗ ██████╗████████╗║\n║  ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██║   ██║██╔════╝╚══██╔══╝║\n║  ██████╔╝██████╔╝██║   ██║██║  ██║██║   ██║██║        ██║   ║\n║  ██╔═══╝ ██╔══██╗██║   ██║██║  ██║██║   ██║██║        ██║   ║\n║  ██║     ██║  ██║╚██████╔╝██████╔╝╚██████╔╝╚██████╗   ██║   ║\n║  ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝  ╚═════╝   ╚═╝   ║\n║     V4.0 — 25 Agents | 4 Commands | 7-Layer Prompts          ║\n╚══════════════════════════════════════════════════════════════╝\n\nCommands:\n  /productupgrade        Basic recursive audit (gstack + superpowers)\n  /auto-swarm \"task\"     Distributed agent swarm for any task\n  /ultra-upgrade         THE ULTIMATE — all techniques, tribunal judge\n  /productupgrade-update Self-update from GitHub'"
+        }
+      ]
+    }
+  ]
+}
