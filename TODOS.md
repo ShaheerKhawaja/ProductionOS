@@ -77,12 +77,12 @@ Items marked ~~strikethrough~~ are DONE.
 
 ### P2 — Medium
 
-#### Max 15 files/batch enforcement (L-09)
-**What:** Guardrail is documented but not enforced. No code counts files in a batch.
+#### ~~Max 15 files/batch enforcement (L-09)~~ DONE
+**Status:** production-upgrade Step 4a-1 now counts files and auto-splits batches >15 files into sub-batches.
 **Effort:** S
 
-#### Pre-commit diff review enforcement (L-10)
-**What:** Guardrail is documented but not enforced by any hook.
+#### ~~Pre-commit diff review enforcement (L-10)~~ DONE
+**Status:** production-upgrade Step 4a now mandates `git diff --stat` display, scope verification, and protected file check before every commit.
 **Effort:** S
 
 #### ~~Claim Analysis pass on findings~~ DONE
@@ -161,5 +161,5 @@ Items marked ~~strikethrough~~ are DONE.
 
 ## Score
 
-**Done:** 25 items (ALL P0 closed: 3 agents, rollback, cost ceiling L-14, wire orphans L-21, schema validation L-15, context overflow L-16 + scratchpad, generated knowledge, convergence wired, cost wired, security hook, distractor prompting, ES-CoT, DOWN gate, confidence calibration, cross-session learning, doc-release, convergence loop, discuss-phase enforcement, claim analysis, Nyquist filler, pause/resume, model profile, per-agent cost tracking, DRY export)
-**Remaining:** 0 P0, 0 P1, 2 P2 (batch limit L-09, pre-commit diff L-10), 6 P3, 7 P4 = 15 items
+**Done:** 27 items (ALL P0+P1+P2 closed: 3 agents, rollback, cost ceiling L-14, wire orphans L-21, schema validation L-15, context overflow L-16, batch limit L-09, pre-commit diff L-10 + scratchpad, generated knowledge, convergence wired, cost wired, security hook, distractor prompting, ES-CoT, DOWN gate, confidence calibration, cross-session learning, doc-release, convergence loop, discuss-phase enforcement, claim analysis, Nyquist filler, pause/resume, model profile, per-agent cost tracking, DRY export)
+**Remaining:** 0 P0, 0 P1, 0 P2, 6 P3, 7 P4 = 13 items (all nice-to-have)

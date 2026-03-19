@@ -147,14 +147,22 @@ For each batch:
 1. Create rollback point: `git stash push -m "productionos-batch-N-pre"`
 2. Execute the batch:
    a. Select next 7 independent fixes from the plan
-   a-1. Verify batch contains <= 15 files total. If more, split into sub-batches.
+   a-1. **BATCH LIMIT ENFORCEMENT (L-09):** Count total files targeted by this batch. If > 15 files:
+        - Split into sub-batches of ≤15 files each
+        - Log: `[ProductionOS] Batch split: {total} files → {N} sub-batches of ≤15`
+        - Execute sub-batches sequentially with validation gate between each
    b. Launch 7 parallel agents, each fixing one item
 3. After all agents complete, run validation gate:
    - TypeScript/Python lint
    - Type check
    - Test suite
 4. If gate PASSES: `git stash drop` (discard rollback point, keep changes), then commit the batch
-   4a. Before committing: display `git diff --stat` and confirm the diff matches expected changes. If unexpected files appear, investigate before committing.
+   4a. **PRE-COMMIT DIFF REVIEW (L-10):** MANDATORY before every commit:
+       - Run `git diff --stat` and display the output
+       - Verify: no files outside the batch scope were modified
+       - Verify: no protected files (.env, keys, certs) appear in the diff
+       - If unexpected files appear: HALT commit, investigate, ask user
+       - Log: `[ProductionOS] Pre-commit review: {N} files, {additions}+/{deletions}- lines`
 5. If gate FAILS: invoke self-healer (fix lint/type errors), retry validation up to 3 rounds
 6. If self-healer cannot fix after 3 rounds: `git stash pop` (restore pre-batch state), log the failed batch to `.productionos/UPGRADE-LOG.md`, continue to next batch
 7. Log results to `.productionos/UPGRADE-LOG.md`
