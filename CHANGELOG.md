@@ -1,5 +1,37 @@
 # Changelog
 
+## [5.3.0] - 2026-03-19
+
+### Added
+- **10-layer prompt composition** — Added Layer 9 (Distractor-Augmented Prompting, +460% accuracy on judge agents) and ES-CoT early stopping for budget mode (~41% token savings)
+- **DOWN confidence-gated debate** — Single-judge fast-path when confidence >= 8.5, skips full 3-judge panel (6x efficiency)
+- **Confidence calibration** — All judge scores now X.X ± Y.Y with CI-based consensus protocol
+- **`/productionos-pause` + `/productionos-resume`** — Pipeline state checkpointing and resumption
+- **`--converge` flag** on /production-upgrade — Recursive convergence loop, default target 10.0 (perfection)
+- **`--profile` flag** on /omni-plan + /production-upgrade — quality | balanced | budget model profiles
+- **Claim Analysis (Step 9.5)** — A-F evidence rating on every agent finding, F-rated removed before commit
+- **Per-agent cost tracking** — AgentRecord interface with tokens/cost/retries/status per agent
+- **Cross-session learning v2** — Aggregates patterns across sessions, writes CROSS-SESSION-PATTERNS.md
+- **Nyquist filler agent** — Test gap analysis with requirement extraction and coverage mapping
+- **6 new agents** — discuss-phase, stub-detector, plan-checker, architecture-designer, intake-interviewer, nyquist-filler, prd-generator, requirements-tracer, scaffold-generator
+
+### Fixed
+- **P0: Cost ceiling** — `--max_cost` flag on /omni-plan-nth + /auto-swarm-nth with mandatory Phase 0 check
+- **P0: Schema validation** — MANIFEST Method 4 artifact validation in INVOCATION-PROTOCOL
+- **P0: Context overflow** — density-summarizer trigger at 75%/93% thresholds in PREAMBLE
+- **P0: Orphan agents** — Wired performance-profiler, persona-orchestrator, comms-assistant, density-summarizer
+- **P1: Discuss-phase enforcement** — Auto-invoke if DECISIONS-LOCKED.md missing
+- **P1: Batch limits** — 15-file enforcement in production-upgrade Step 4
+- **P1: Pre-commit diff review** — git diff --stat display before commit
+- **P2: DRY** — Export overallGrade from convergence.ts, import in dashboard
+- **P2: Path traversal** — PreToolUse/PostToolUse hooks for protected-file-guard
+- **Document-release post-pipeline** — 6-point doc sync in omni-plan Step 13 + production-upgrade Step 6
+
+### Stats
+- 49 agents (was 43), 17 commands (was 14), 10 prompt layers (was 9)
+- 118 tests passing, 0 failures
+- All P0 + P1 + P2 loophole audit items closed (25/25)
+
 ## [5.2.0] - 2026-03-18
 
 ### Added

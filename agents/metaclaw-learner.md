@@ -132,7 +132,7 @@ After each run, append to `~/.productionos/learned/metrics.jsonl`:
 {
   "run_date": "{ISO timestamp}",
   "target": "{project name}",
-  "mode": "{productupgrade|ultra-upgrade}",
+  "mode": "{production-upgrade|omni-plan}",
   "grade_start": 4.2,
   "grade_end": 7.8,
   "iterations": 5,

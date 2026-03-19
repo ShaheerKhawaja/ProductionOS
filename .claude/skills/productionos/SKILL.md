@@ -1,6 +1,6 @@
 ---
 name: productionos
-description: "ProductionOS 5.3 — Your AI engineering team. 43 agents that fill roles you can't hire fast enough: code reviewer, QA engineer, security auditor, solutions architect, CTO reviewer, release manager. Built by a solo founder shipping a complex SaaS at hackathon pace."
+description: "ProductionOS 5.3 — Your AI engineering team. 49 agents that fill roles you can't hire fast enough: code reviewer, QA engineer, security auditor, solutions architect, CTO reviewer, release manager. Built by a solo founder shipping a complex SaaS at hackathon pace."
 ---
 
 # ProductionOS 5.3 — Your AI Engineering Team
@@ -11,7 +11,7 @@ You're building a production SaaS — complex backend, frontend, infrastructure,
 
 ## The Solution
 
-ProductionOS turns Claude Code into a full engineering department. 43 agents fill the roles you can't hire fast enough:
+ProductionOS turns Claude Code into a full engineering department. 49 agents fill the roles you can't hire fast enough:
 
 | Role | What It Does | Key Agents |
 |------|-------------|------------|
@@ -75,7 +75,7 @@ Discovers your stack → deploys 7 review agents → scores 10 dimensions → ge
 
 **Stub detection.** The stub-detector agent (born from finding 11 fake-data paths in Entropy Studio) distinguishes "file exists" from "feature works" — catches placeholder components, mock data, `NotImplementedError`, hardcoded arrays, and decorative integrations.
 
-**Pre-pipeline user decisions.** The discuss-phase agent captures what you actually want BEFORE 43 agents start optimizing. Prevents the pipeline from running in the wrong direction.
+**Pre-pipeline user decisions.** The discuss-phase agent captures what you actually want BEFORE 49 agents start optimizing. Prevents the pipeline from running in the wrong direction.
 
 **Observable execution.** Cost estimation before every run. Terminal convergence dashboard showing real-time grade progression. Security hooks blocking writes to .env, keys, certs.
 
@@ -107,7 +107,7 @@ dynamic-planner, swarm-orchestrator, recursive-orchestrator, guardrails-controll
 ```bash
 cd ~/.claude/plugins/marketplaces/productupgrade
 bun run skill:check    # 10/10 health score
-bun run validate       # 43/43 agents valid
+bun run validate       # 43/49 agents valid
 bun test               # 118 tests passing
 ```
 

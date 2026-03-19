@@ -7,7 +7,7 @@ git clone https://github.com/ShaheerKhawaja/productupgrade.git
 cd productupgrade
 bun install
 bun run skill:check    # Must pass 10/10
-bun run validate       # Must show 35/35 valid
+bun run validate       # Must show 49/49 valid
 bun test               # Must pass all tests
 ```
 
@@ -16,9 +16,9 @@ bun test               # Must pass all tests
 ```
 productupgrade/
 ├── .claude-plugin/           # Plugin manifest + marketplace listing
-├── .claude/commands/         # 13 command definitions (.md)
+├── .claude/commands/         # 17 command definitions (.md)
 ├── .claude/skills/           # Skill definition (SKILL.md)
-├── agents/                   # 48 agent definitions (.md)
+├── agents/                   # 49 agent definitions (.md)
 ├── templates/                # Shared templates (preamble, rubric, convergence)
 ├── prompts/                  # Prompt engineering technique files
 ├── scripts/                  # TypeScript infrastructure (Bun)

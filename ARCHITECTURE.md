@@ -6,13 +6,13 @@ This document explains **why** ProductionOS is built the way it is. For setup an
 
 | Capability | Status | Notes |
 |------------|--------|-------|
-| 48 agent definitions | IMPLEMENTED | Quality ranges from 60-line stubs to 800-line production protocols |
-| 13 commands | IMPLEMENTED | 3 fully orchestrated, 7 need Step 0 preambles |
+| 49 agent definitions | IMPLEMENTED | Quality ranges from 60-line stubs to 800-line production protocols |
+| 17 commands | IMPLEMENTED | All pipeline commands have Step 0 preambles |
 | TypeScript validation (skill-check, validate-agents) | IMPLEMENTED | 10/10 checks passing |
 | Artifact flow between commands | DESIGNED | Commands don't yet check for existing artifacts before running |
 | Convergence loop for /omni-plan | IMPLEMENTED | Full PIVOT/REFINE/PROCEED with tri-tiered judging |
-| Convergence loop for /production-upgrade | DESIGNED | Currently single-pass (Steps 0-6 linear) |
-| Self-learning hook | DESIGNED | self-learn.sh exists but is not wired in hooks.json |
+| Convergence loop for /production-upgrade | IMPLEMENTED | --converge flag, max 5 iterations, target 10.0 |
+| Self-learning hook | IMPLEMENTED | self-learn.sh v2 wired in hooks.json PostToolUse, cross-session aggregation |
 | Review Readiness Dashboard | IMPLEMENTED | Script works, no commands log to it yet |
 | Artifact manifest tracking | DESIGNED | Script in progress |
 | Fix-first heuristic | PARTIAL | Only code-reviewer.md implements AUTO-FIX/ASK |
@@ -59,9 +59,9 @@ Commands chain through a shared architecture:
 SHARED PREAMBLE (templates/PREAMBLE.md)
     |
     v
-COMMAND (10 available)
+COMMAND (17 available)
     |
-    +-- resolves relevant AGENTS from agents/ (35 total)
+    +-- resolves relevant AGENTS from agents/ (49 total)
     |
     +-- produces ARTIFACTS to .productionos/
     |
@@ -100,7 +100,7 @@ Commands produce artifacts consumed by downstream commands — this is what make
 
 ## Agent Architecture
 
-### Why 48 agents instead of 1 big prompt
+### Why 49 agents instead of 1 big prompt
 
 A single prompt covering security, UX, performance, naming, accessibility, database design, API contracts, business logic, and deployment safety would be 50K+ tokens of instructions. The model would attend to all of them weakly instead of any of them strongly.
 
@@ -125,7 +125,7 @@ ORCHESTRATIVE (varies):
 
 This prevents the fox-guarding-henhouse problem where a fix agent reports its own fix as successful.
 
-### Agent Categories (35 total)
+### Agent Categories (49 total)
 
 | Category | Count | Model | Access | Purpose |
 |----------|-------|-------|--------|---------|
@@ -144,19 +144,23 @@ Model assignment follows the principle: **reasoning quality matters most where e
 
 So judges and researchers get Opus (highest reasoning). Executors use the session's default model.
 
-## The 7-Layer Prompt Composition
+## The 10-Layer Prompt Composition
 
 Every technique has published research showing measurable accuracy improvement. They're not decorative — each layer addresses a specific failure mode:
 
 | Layer | Addresses | Research |
 |-------|-----------|----------|
-| Emotion Prompting | Low effort on "boring" tasks | Li 2023: +8-15% accuracy |
-| Meta-Prompting | Premature conclusions | Forces reflection before action |
-| Context Retrieval | Hallucinated assumptions | Grounds in actual docs/history |
-| Chain of Thought | Skipped reasoning steps | Wei 2022: +20-30% on complex |
-| Tree of Thought | Single-path fixation | Yao 2023: +70% on planning |
-| Graph of Thought | Missed systemic connections | Besta 2024: +51% on synthesis |
-| Chain of Density | Context rot across iterations | Adams 2023: 3x compression |
+| L1: Emotion Prompting | Low effort on "boring" tasks | Li 2023: +8-15% accuracy |
+| L2: Meta-Prompting | Premature conclusions | Forces reflection before action |
+| L2.5: Scratchpad | Surface-level reasoning | Private inner monologue |
+| L3: Context Retrieval | Hallucinated assumptions | Grounds in actual docs/history |
+| L4: Chain of Thought | Skipped reasoning steps | Wei 2022: +20-30% on complex |
+| L4+: ES-CoT (budget mode) | Token waste on convergent findings | arXiv 2509.14004: ~41% savings |
+| L5: Tree of Thought | Single-path fixation | Yao 2023: +70% on planning |
+| L6: Graph of Thought | Missed systemic connections | Besta 2024: +51% on synthesis |
+| L7: Chain of Density | Context rot across iterations | Adams 2023: 3x compression |
+| L8: Generated Knowledge | Missing domain context | Pre-generate best practices |
+| L9: Distractor-Augmented | Anchoring bias in judges | Chhikara 2025: +460% accuracy |
 
 Layers are applied selectively via the application matrix in `templates/PROMPT-COMPOSITION.md`. Not every agent gets every layer.
 
@@ -270,7 +274,7 @@ cd ~/.claude/plugins/marketplaces/productupgrade && bun install
 
 # Verify installation
 bun run skill:check    # Should show 10/10
-bun run validate       # Should show 35/35 valid
+bun run validate       # Should show 49/49 valid
 ```
 
 Minimum requirements: Claude Code 2.0+, Bun 1.0+, macOS or Linux.
@@ -286,9 +290,9 @@ Minimum requirements: Claude Code 2.0+, Bun 1.0+, macOS or Linux.
 
 | Dimension | gstack | ProductionOS |
 |-----------|--------|-------------|
-| Architecture | 16 skills (sequential) | 48 agents (parallel swarm) |
-| Multi-model | Eval-only | Tri-tiered tribunal |
-| Prompt layers | Implicit (latent-space) | Explicit 9-layer composition |
+| Architecture | 16 skills (sequential) | 49 agents (parallel swarm) |
+| Multi-model | Eval-only | Tri-tiered tribunal with DOWN gate |
+| Prompt layers | Implicit (latent-space) | Explicit 10-layer composition |
 | Convergence | hyper-plan (10 dims) | Parameterized per command |
 | Research | None | /deep-research (8-phase) |
 | Security | Section-level | OWASP/MITRE/NIST agents |

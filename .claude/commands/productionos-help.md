@@ -7,11 +7,11 @@ description: "Show how to use ProductionOS — explains commands, recommended wo
 
 ## Getting Started
 
-ProductionOS is an agentic development operating system with 48 agents and 13 commands. Here's how to use it effectively.
+ProductionOS is your AI engineering team — 49 agents and 17 commands. Here's how to use it effectively.
 
 ## Step 0: Preamble
 
-All ProductionOS commands run the shared preamble (`templates/PREAMBLE.md`) before execution. This includes environment check, prior work discovery, agent resolution, and prompt injection defense.
+All ProductionOS commands run the shared preamble (`templates/PREAMBLE.md`) before execution. This includes environment check, prior work discovery, agent resolution, cost estimation, and prompt injection defense.
 
 ## Quick Reference
 
@@ -22,13 +22,17 @@ COMMAND                          WHEN TO USE
 /omni-plan-nth                   Recursive perfection — loops until 10/10
 /auto-swarm "task"               Throw agents at any task in parallel
 /auto-swarm-nth "task"           Recursive swarm until 100% coverage
+/max-research "topic"            500-1000 agents — exhaustive research (nuclear)
 /deep-research "topic"           Research anything before building
 /agentic-eval                    Evaluate quality with CLEAR framework
 /security-audit                  7-domain security deep-dive
 /context-engineer                Build token-optimized context packages
 /logic-mode "idea"               Validate a business idea
 /learn-mode "topic"              Interactive code tutor
+/productionos-pause              Save pipeline state for later
+/productionos-resume             Resume from checkpoint
 /productionos-update             Update to latest version
+/productionos-help               This guide
 ```
 
 ## Recommended Workflows

@@ -76,20 +76,20 @@
 
 ## Agent Loading
 
-Agent definitions live in `agents/` (48 files). Commands load agents on-demand — do NOT preload all agent files. Only read the specific agent file when a command references it during execution.
+Agent definitions live in `agents/` (49 files). Commands load agents on-demand — do NOT preload all agent files. Only read the specific agent file when a command references it during execution.
 
 ## Prompting Architecture
 
-Agents in deep/ultra mode receive 9-layer composed prompts (see `templates/PROMPT-COMPOSITION.md`):
+Agents in deep/ultra mode receive 10-layer composed prompts (see `templates/PROMPT-COMPOSITION.md`):
 1. **Emotion Prompting** — Stakes calibrated to severity
 2. **Meta-Prompting** — Self-reflection before action
 3. **Context Retrieval** — RAG from memory + context7
-4. **Chain of Thought** — Step-by-step reasoning
+4. **Chain of Thought** — Step-by-step reasoning (+ ES-CoT in budget mode)
 5. **Tree of Thought** — 3-branch exploration with scoring
 6. **Graph of Thought** — Finding network with edge detection
 7. **Chain of Density** — Compression for inter-iteration handoff
-8. **Scratchpad** — Working memory for intermediate reasoning
-9. **Generated Knowledge** — Pre-generate facts before answering
+8. **Generated Knowledge** — Pre-generate domain best practices before answering
+9. **Distractor-Augmented** — Force judges to argue against plausible-but-wrong conclusions
 
 ## Guardrails (Non-Negotiable)
 
