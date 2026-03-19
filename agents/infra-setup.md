@@ -1,6 +1,21 @@
 ---
 name: infra-setup
 description: "Infrastructure and backend setup specialist. Designs and scaffolds production backends with database support (Supabase, PostgreSQL, Pinecone, MongoDB), auth (Clerk, Auth0), payments (Stripe), and deployment (Vercel, Railway, Fly.io). Creates runnable scaffolds, not just plans."
+capabilities:
+  - backend-scaffold
+  - database-wiring
+  - auth-setup
+  - payment-integration
+  - deployment-config
+  - docker-compose
+input_contract:
+  requires: ["target_dir"]
+  optional: ["stack", "database", "auth_provider", "deployment_target"]
+output_contract:
+  produces: ".productionos/INFRA-SETUP.md"
+  format: "manifest-markdown"
+invocable_by: any
+cost_tier: medium
 tools:
   - Read
   - Write

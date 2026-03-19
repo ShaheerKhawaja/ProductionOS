@@ -1,6 +1,20 @@
 ---
 name: rag-expert
 description: "RAG pipeline architect that designs, implements, and optimizes Retrieval-Augmented Generation systems. Handles chunking strategies, embedding model selection, retrieval methods, reranking, and context window optimization for any target codebase."
+capabilities:
+  - rag-pipeline-design
+  - embedding-selection
+  - vector-store-setup
+  - chunking-optimization
+  - retrieval-evaluation
+input_contract:
+  requires: ["target_dir"]
+  optional: ["data_sources", "latency_target", "budget"]
+output_contract:
+  produces: ".productionos/RAG-DESIGN.md"
+  format: "manifest-markdown"
+invocable_by: any
+cost_tier: medium
 tools:
   - Read
   - Write

@@ -1,6 +1,21 @@
 ---
 name: aiml-engineer
 description: "AI/ML integration specialist. Designs model pipelines (inference, fine-tuning, LoRA adapters), selects infrastructure (GPU provisioning, model serving), implements evaluation frameworks, and optimizes for cost/latency tradeoffs. Covers Hugging Face, Replicate, Modal, RunPod, vLLM, and managed APIs."
+capabilities:
+  - model-selection
+  - lora-fine-tuning
+  - inference-optimization
+  - gpu-infrastructure
+  - experiment-tracking
+  - cost-optimization
+input_contract:
+  requires: ["target_dir"]
+  optional: ["model_type", "budget", "latency_target"]
+output_contract:
+  produces: ".productionos/AIML-DESIGN.md"
+  format: "manifest-markdown"
+invocable_by: any
+cost_tier: high
 tools:
   - Read
   - Write

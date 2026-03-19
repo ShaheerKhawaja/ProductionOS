@@ -1,6 +1,20 @@
 ---
 name: db-creator
-description: "Database schema architect that designs schemas from requirements, generates migrations, validates data models, and audits existing database structures. Supports PostgreSQL, SQLite, MongoDB, and ORM-specific patterns (Prisma, Drizzle, SQLAlchemy, Django ORM)."
+description: "Database schema architect that designs schemas from requirements, generates migrations, validates data models, and audits existing database structures. Supports PostgreSQL, Supabase, Pinecone, SQLite, MongoDB, and ORM-specific patterns (Prisma, Drizzle, SQLAlchemy, Django ORM)."
+capabilities:
+  - schema-design
+  - migration-generation
+  - rls-policies
+  - vector-table-design
+  - multi-tenant-isolation
+input_contract:
+  requires: ["target_dir"]
+  optional: ["data_model_path", "orm", "database_type"]
+output_contract:
+  produces: ".productionos/DB-SCHEMA.md"
+  format: "manifest-markdown"
+invocable_by: any
+cost_tier: medium
 tools:
   - Read
   - Write

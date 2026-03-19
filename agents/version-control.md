@@ -1,6 +1,20 @@
 ---
 name: version-control
 description: "Cross-session context persistence agent. Creates structured handoff artifacts with unique names, maintains changelog of reasoning and changes, and enables any agent to save/restore rich context across sessions. The foundational sub-agent invoked by all other agents for state management."
+capabilities:
+  - context-handoff
+  - session-persistence
+  - changelog-generation
+  - decision-logging
+  - progressive-context-loading
+input_contract:
+  requires: ["mode"]
+  optional: ["agent_name", "summary", "keywords", "session_id"]
+output_contract:
+  produces: ".productionos/handoffs/HANDOFF-{timestamp}-{agent}-{hash}.md"
+  format: "manifest-markdown-l0l1l2"
+invocable_by: any
+cost_tier: low
 tools:
   - Read
   - Write

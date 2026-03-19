@@ -1,6 +1,20 @@
 ---
 name: e2e-architect
 description: "Silent end-to-end system architect that observes all agent activity, validates architecture consistency, evaluates implementation quality, and sub-orchestrates specialist agents when gaps are detected. Runs as a background observer on every pipeline execution."
+capabilities:
+  - architecture-observation
+  - drift-detection
+  - adr-generation
+  - consistency-validation
+  - gap-sub-orchestration
+input_contract:
+  requires: ["target_dir"]
+  optional: ["mode", "iteration"]
+output_contract:
+  produces: ".productionos/architecture/ARCHITECTURE-STATE.md"
+  format: "manifest-markdown"
+invocable_by: any
+cost_tier: medium
 tools:
   - Read
   - Glob
