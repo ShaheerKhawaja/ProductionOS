@@ -1,7 +1,7 @@
 {
   "name": "productionos",
-  "description": "Agentic development OS — 35 agents, 13 commands, tri-tiered evaluation, 7-layer prompt composition, recursive convergence, TypeScript infrastructure, cross-run learning, and GitOps orchestration",
-  "version": "5.1.0",
+  "description": "Agentic development OS — 40 agents, 14 commands, tri-tiered evaluation, 7-layer prompt composition, recursive convergence, TypeScript infrastructure, cross-run learning, and GitOps orchestration",
+  "version": "5.2.0",
   "author": {
     "name": "Shaheer Khawaja",
     "email": "shaheer@entropyandco.com"
@@ -34,6 +34,8 @@
     "persona-evaluation",
     "7-layer-prompt-composition",
     "convergence-engine",
-    "self-healing"
+    "self-healing",
+    "max-research",
+    "nuclear-scale-research"
   ]
 }

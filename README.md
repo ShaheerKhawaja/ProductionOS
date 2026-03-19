@@ -1,78 +1,138 @@
-# ProductionOS
+# ProductionOS -- Agentic Development Operating System
 
-Agentic development operating system for Claude Code — 35 agents, 13 commands, recursive convergence, tri-tiered evaluation, and cross-command artifact flow.
+40-agent development OS with 14 commands for Claude Code. Nuclear-scale research, recursive orchestration, multi-agent swarms, and tri-tiered quality evaluation -- all targeting 10/10.
+
+## Installation
+
+```bash
+# Via Claude Code plugin marketplace
+claude plugin install productupgrade
+
+# Or manual clone
+git clone https://github.com/ShaheerKhawaja/productupgrade.git ~/.claude/plugins/marketplaces/productupgrade
+cd ~/.claude/plugins/marketplaces/productupgrade && bun install
+```
 
 ## Quick Start
 
-```bash
-# Install
-git clone https://github.com/ShaheerKhawaja/productupgrade.git ~/.claude/plugins/marketplaces/productupgrade
-
-# Verify
-cd ~/.claude/plugins/marketplaces/productupgrade && bun install && bun run skill:check
-
-# Use any command
-/production-upgrade          # Audit any codebase
-/omni-plan                   # Full 13-step pipeline
-/auto-swarm "research X"     # Distributed agent swarm
+```
+/production-upgrade          Audit any codebase with recursive convergence
+/omni-plan                   Full 13-step pipeline with tri-tiered judging
+/auto-swarm "task"           Distributed agent swarm for any task
 ```
 
-## Commands
+## Commands (14)
 
-| Command | Purpose | Agents | Target |
-|---------|---------|--------|--------|
-| `/production-upgrade` | Recursive product audit | 7/phase | 8.0/10 grade |
-| `/omni-plan` | 13-step pipeline with tri-tiered judging | 14/phase | 9.5/10 grade |
-| `/auto-swarm "task"` | Distributed agent swarm | 7/wave | 85% coverage |
-| `/deep-research` | 8-phase research pipeline | 5/phase | 80%+ confidence |
-| `/agentic-eval` | CLEAR v2.0 evaluation | 3 judges | Scored report |
-| `/security-audit` | OWASP/MITRE/NIST audit | 7 domains | Threat map |
-| `/context-engineer` | Token-optimized context | 1 | Budget plan |
-| `/logic-mode` | Business idea validation | 5 phases | Go/no-go |
-| `/learn-mode` | Interactive code tutor | 1 | Understanding |
-| `/productionos-update` | Self-update from GitHub | 1 | Latest version |
+### Orchestrative -- recursive, nth-iteration
 
-## Agents (35)
+| Command | Description | Agent Scale |
+|---------|-------------|-------------|
+| `/omni-plan-nth [target]` | Recursive orchestration -- chains ALL skills, loops until 10/10 | 21/iter, max 420 |
+| `/auto-swarm-nth "task"` | Recursive swarm -- 100% coverage, 10/10 quality per item | 7/wave, max 140 |
 
-**Core (11):** llm-judge, deep-researcher, code-reviewer, ux-auditor, dynamic-planner, business-logic-validator, dependency-scanner, api-contract-validator, naming-enforcer, refactoring-agent, database-auditor
+### Pipeline -- structured, single-pass with convergence
 
-**Advanced (9):** adversarial-reviewer, thought-graph-builder, persona-orchestrator, density-summarizer, context-retriever, frontend-scraper, vulnerability-explorer, swarm-orchestrator, guardrails-controller
+| Command | Description | Agent Scale |
+|---------|-------------|-------------|
+| `/omni-plan [target]` | 13-step pipeline with tri-tiered judging | 14/phase |
+| `/auto-swarm "task" [--depth]` | Distributed agent swarm (shallow, medium, deep, ultra) | 7/wave, max 77 |
+| `/production-upgrade [mode]` | Recursive product audit (full, audit, ux, fix, validate, judge) | 7/phase, max 49 |
 
-**V4+ (9):** test-architect, performance-profiler, migration-planner, self-healer, convergence-monitor, decision-loop, metaclaw-learner, research-pipeline, security-hardener
+### Nuclear Scale
 
-**V5.1 (6):** gitops, frontend-designer, asset-generator, comms-assistant, comparative-analyzer, reverse-engineer
+| Command | Description | Agent Scale |
+|---------|-------------|-------------|
+| `/max-research [topic]` | 500-1000 agents in ONE massive wave -- exhaustive research | 500-1000 (single wave) |
 
-## Architecture
+### Specialized
 
-Commands produce artifacts in `.productionos/` consumed by downstream commands:
+| Command | Description |
+|---------|-------------|
+| `/deep-research [topic]` | 8-phase autonomous research pipeline |
+| `/agentic-eval [target]` | CLEAR v2.0 framework evaluation |
+| `/security-audit [target]` | 7-domain OWASP/MITRE/NIST security audit |
+| `/context-engineer [target]` | Token-optimized context packaging |
+| `/logic-mode [idea]` | Business idea validation pipeline |
+| `/learn-mode [topic]` | Interactive code tutor |
+| `/productionos-update` | Self-update from GitHub |
+
+## Agents (40)
+
+| Category | Count | Agents |
+|----------|-------|--------|
+| Core | 11 | llm-judge, deep-researcher, code-reviewer, ux-auditor, dynamic-planner, business-logic-validator, dependency-scanner, api-contract-validator, naming-enforcer, refactoring-agent, database-auditor |
+| Advanced | 9 | adversarial-reviewer, thought-graph-builder, persona-orchestrator, density-summarizer, context-retriever, frontend-scraper, vulnerability-explorer, swarm-orchestrator, guardrails-controller |
+| V4+ | 9 | test-architect, performance-profiler, migration-planner, self-healer, convergence-monitor, decision-loop, metaclaw-learner, research-pipeline, security-hardener |
+| V5.1 | 6 | gitops, frontend-designer, asset-generator, comms-assistant, comparative-analyzer, reverse-engineer |
+| V5.2 | 5 | debate-tribunal, ecosystem-scanner, gap-analyzer, recursive-orchestrator, verification-gate |
+
+Agents are loaded on-demand from `agents/`. Commands only read agent files when referenced during execution -- no preloading.
+
+## Orchestration Hierarchy
 
 ```
-/deep-research --> RESEARCH-*.md --+
-                                   v
-/production-upgrade --> AUDIT-DISCOVERY.md --> /omni-plan (13 steps)
-                                                  |
-                                     REVIEW-CEO + REVIEW-ENG + JUDGE-PANEL
-                                                  |
-                                     /auto-swarm (execution engine)
-                                                  |
-                                     /ship (document + push + PR)
+/omni-plan-nth (TOP LEVEL -- invokes any command, loops until 10/10)
+    |
+    +-- /omni-plan (13-step pipeline per iteration)
+    |   +-- /deep-research (Step 1)
+    |   +-- /agentic-eval (Step 6)
+    |   +-- /auto-swarm-nth (Step 9 -- execution engine)
+    |   +-- /ship (Step 13, external)
+    |
+    +-- /auto-swarm-nth (parallel execution, recursive quality gates)
+    |
+    +-- /max-research (NUCLEAR -- 500-1000 agents, single massive wave)
+    |
+    +-- /production-upgrade (structured audit)
+    +-- /deep-research (topic research)
+    +-- /security-audit (security-focused audit)
+    +-- /agentic-eval (quality evaluation)
 ```
+
+## Features
+
+**7-Layer Prompt Composition** -- agents in deep/ultra mode receive layered prompts:
+
+1. Emotion Prompting -- stakes calibrated to severity
+2. Meta-Prompting -- self-reflection before action
+3. Context Retrieval -- RAG from memory and context7
+4. Chain of Thought -- step-by-step reasoning
+5. Tree of Thought -- 3-branch exploration with scoring
+6. Graph of Thought -- finding network with edge detection
+7. Chain of Density -- compression for inter-iteration handoff
+
+**Tri-Tiered Evaluation** -- three independent judges score every output:
+
+- Judge 1 (correctness) -- factual accuracy, code validity
+- Judge 2 (practicality) -- real-world applicability, maintainability
+- Judge 3 (adversarial) -- attack surface, edge cases, failure modes
+
+**Recursive Convergence** -- commands loop with PIVOT/REFINE/PROCEED decisions until target scores are met. Regression protection rolls back any dimension drop greater than 0.5.
+
+**Guardrails** -- pre-commit diff review, pre-push approval, protected files (.env, keys, certs), max 15 files/batch, automatic rollback on test failure or score regression.
+
+## Output
+
+All pipeline artifacts go to `.productionos/` in the target project. Artifacts are tracked via manifest for cross-command consumption.
 
 ## Validation
 
 ```bash
-bun run skill:check      # 10-check health dashboard
-bun run validate          # Agent frontmatter validation (35/35)
-bun run audit:context     # Token budget tracking
-bun run dashboard         # Review readiness dashboard
-bun test                  # Automated test suite
+bun run skill:check        # 10-check health dashboard
+bun run validate           # Agent frontmatter validation (40/40)
+bun run audit:context      # Token budget tracking
+bun run dashboard          # Review readiness dashboard
+bun test                   # Automated test suite
 ```
 
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code) CLI
-- [Bun](https://bun.sh) runtime (for TypeScript scripts)
-- Recommended: [gstack](https://github.com/garry-tan/gstack), [superpowers](https://github.com/anthropics/claude-code)
+- [Bun](https://bun.sh) >= 1.0.0 (for TypeScript infrastructure scripts)
+
+## Version
+
+5.2.0
 
 ## License
 

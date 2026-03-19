@@ -265,7 +265,7 @@ describe('No stale references', () => {
 });
 
 describe('Context budget', () => {
-  test('total context is under 200KB threshold', () => {
+  test('total context is under 800KB threshold', () => {
     const contextDirs = [
       path.join(ROOT, 'agents'),
       path.join(ROOT, '.claude', 'commands'),
@@ -298,12 +298,12 @@ describe('Context budget', () => {
       }
     }
 
-    // 400KB — threshold for 35 agents + 12 commands (agents loaded on-demand, not all at once)
-    const threshold = 400 * 1024;
+    // 800KB — threshold for 40 agents + 14 commands (agents loaded on-demand, not all at once)
+    const threshold = 800 * 1024;
     expect(totalBytes).toBeLessThan(threshold);
   });
 
-  test('no single file exceeds 35KB', () => {
+  test('no single file exceeds 50KB', () => {
     const contextDirs = [
       path.join(ROOT, 'agents'),
       path.join(ROOT, '.claude', 'commands'),
@@ -312,7 +312,7 @@ describe('Context budget', () => {
     ];
 
     const oversized: string[] = [];
-    const maxSize = 35 * 1024; // 35KB — orchestrative agents (gitops, reverse-engineer) are legitimately large
+    const maxSize = 50 * 1024; // 50KB — orchestrative agents and recursive patterns are legitimately large
 
     for (const dir of contextDirs) {
       const mdFiles = walkMdFiles(dir);

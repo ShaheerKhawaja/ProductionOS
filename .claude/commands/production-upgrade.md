@@ -118,7 +118,7 @@ Save to `.productionos/VALIDATION-REPORT.md` and `.productionos/RUBRIC-AFTER.md`
 ### Step 6: Summary
 Present the final summary:
 ```
-PRODUCTUPGRADE COMPLETE
+PRODUCTIONOS UPGRADE COMPLETE
 ───────────────────────
 Grade: BEFORE → AFTER
 Findings: X total (Y fixed, Z deferred)

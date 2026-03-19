@@ -73,7 +73,7 @@ Create `.claude/commands/your-command.md` with YAML frontmatter. Include:
 ## Code Standards
 
 - Output paths: `.productionos/` (not `.productupgrade/`)
-- Branding: "ProductionOS" (not "ProductUpgrade")
+- Branding: "ProductionOS" throughout (no legacy names)
 - No hardcoded user paths
 - TypeScript: strict mode, use `execFileSync` (not shell interpolation)
 - Agent files: YAML frontmatter + XML tags

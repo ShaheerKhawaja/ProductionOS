@@ -1590,4 +1590,4 @@ P2-34-35 (version + changelog) ─┘
 
 ---
 
-*This specification was synthesized from ProductionOS 5.1.0 (commit 6c522ef), including CLAUDE.md, ARCHITECTURE.md, all 13 command definitions, all 37 agent definitions, RECURSIVE-PATTERNS.md (Layers 16-21), convergence-detection.md (6 algorithms), PROMPT-COMPOSITION.md (7-layer stack + extended matrix), INVOCATION-PROTOCOL.md, PREAMBLE.md, and project memory files documenting the evolution from ProductUpgrade V2.1 through V4.0 to ProductionOS 5.1.0.*
+*This specification was synthesized from ProductionOS 5.1.0 (commit 6c522ef), including CLAUDE.md, ARCHITECTURE.md, all 13 command definitions, all 37 agent definitions, RECURSIVE-PATTERNS.md (Layers 16-21), convergence-detection.md (6 algorithms), PROMPT-COMPOSITION.md (7-layer stack + extended matrix), INVOCATION-PROTOCOL.md, PREAMBLE.md, and project memory files documenting the evolution from ProductionOS V2.1 through V4.0 to ProductionOS 5.1.0.*

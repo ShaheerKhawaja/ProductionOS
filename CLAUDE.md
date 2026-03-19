@@ -1,6 +1,6 @@
 # ProductionOS 5.2 — Agentic Development Operating System
 
-35-agent development OS with 14 commands, 7-layer prompt composition, tri-tiered evaluation, recursive nth-iteration convergence targeting 10/10, and nuclear-scale max-research.
+40-agent development OS with 14 commands, 7-layer prompt composition, tri-tiered evaluation, recursive nth-iteration convergence targeting 10/10, and nuclear-scale max-research.
 
 ## Commands
 
@@ -73,7 +73,7 @@
 
 ## Agent Loading
 
-Agent definitions live in `agents/` (35 files). Commands load agents on-demand — do NOT preload all agent files. Only read the specific agent file when a command references it during execution.
+Agent definitions live in `agents/` (40 files). Commands load agents on-demand — do NOT preload all agent files. Only read the specific agent file when a command references it during execution.
 
 ## Prompting Architecture
 
