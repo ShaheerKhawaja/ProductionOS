@@ -1,63 +1,7 @@
 import { describe, test, expect } from 'bun:test';
 import * as fs from 'fs';
 import * as path from 'path';
-
-const ROOT = path.resolve(import.meta.dir, '..');
-
-// ─── Helpers ────────────────────────────────────────────────
-
-function readFileOrNull(filePath: string): string | null {
-  try {
-    return fs.readFileSync(filePath, 'utf-8');
-  } catch {
-    return null;
-  }
-}
-
-function listMdFiles(dir: string): string[] {
-  try {
-    return fs.readdirSync(dir).filter(f => f.endsWith('.md'));
-  } catch {
-    return [];
-  }
-}
-
-function parseFrontmatter(content: string): Record<string, unknown> | null {
-  const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
-  if (!fmMatch) return null;
-
-  const frontmatter: Record<string, unknown> = {};
-  const lines = fmMatch[1].split('\n');
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const colonIdx = line.indexOf(':');
-    if (colonIdx === -1) continue;
-    if (line.startsWith(' ') || line.startsWith('\t')) continue;
-
-    const key = line.slice(0, colonIdx).trim();
-    const inlineValue = line.slice(colonIdx + 1).trim();
-
-    if (inlineValue === '' || inlineValue === '|' || inlineValue === '>') {
-      const items: string[] = [];
-      for (let j = i + 1; j < lines.length; j++) {
-        const trimmed = lines[j].trim();
-        if (trimmed.startsWith('- ')) {
-          items.push(trimmed.slice(2).trim());
-        } else if (trimmed === '' || lines[j].startsWith(' ') || lines[j].startsWith('\t')) {
-          continue;
-        } else {
-          break;
-        }
-      }
-      frontmatter[key] = items.length > 0 ? items : '';
-    } else {
-      frontmatter[key] = inlineValue.replace(/^["']|["']$/g, '');
-    }
-  }
-
-  return frontmatter;
-}
+import { parseFrontmatter, readFileOrNull, listMdFiles, ROOT } from '../scripts/lib/shared';
 
 function walkFiles(dir: string, ext: string): string[] {
   const results: string[] = [];

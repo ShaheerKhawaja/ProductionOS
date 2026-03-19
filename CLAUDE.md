@@ -31,6 +31,7 @@
 /logic-mode [idea]             Business idea validation pipeline
 /learn-mode [topic]            Interactive code tutor
 /productionos-update           Self-update from GitHub
+/productionos-help             Usage guide and workflows
 ```
 
 ## Orchestration Hierarchy

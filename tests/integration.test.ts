@@ -820,7 +820,7 @@ describe("Integration Smoke", () => {
   });
 
   test("no markdown file has broken relative links", () => {
-    const allMdFiles = [
+    const allMdFilesForLinks = [
       ...walkFiles(AGENTS_DIR),
       ...walkFiles(COMMANDS_DIR),
       ...walkFiles(PROMPTS_DIR),
@@ -830,7 +830,7 @@ describe("Integration Smoke", () => {
     const violations: string[] = [];
     const linkPattern = /\[.*?\]\(\.\/([^)]+\.md)\)/g;
 
-    for (const filePath of allMdFiles) {
+    for (const filePath of allMdFilesForLinks) {
       const content = readFileOrNull(filePath);
       if (!content) continue;
 
@@ -845,6 +845,34 @@ describe("Integration Smoke", () => {
             `${relative(ROOT, filePath)}: broken link to ./${linkedFile}`
           );
         }
+      }
+    }
+    expect(violations).toEqual([]);
+  });
+});
+
+// ─── DRY Guardrails ─────────────────────────────────────────────
+
+describe("DRY Guardrails", () => {
+  test("no script redefines parseFrontmatter locally (must import from shared.ts)", () => {
+    const scriptsDir = join(ROOT, "scripts");
+    const testsDir = join(ROOT, "tests");
+
+    const filesToCheck = [
+      ...walkFiles(scriptsDir, ".ts").filter(f => !f.includes("lib/shared")),
+      ...walkFiles(testsDir, ".ts"),
+    ];
+
+    const violations: string[] = [];
+    const localDefPattern = /^function parseFrontmatter\(/m;
+
+    for (const filePath of filesToCheck) {
+      const content = readFileOrNull(filePath);
+      if (!content) continue;
+      if (localDefPattern.test(content)) {
+        violations.push(
+          `${relative(ROOT, filePath)}: defines parseFrontmatter locally instead of importing from shared.ts`
+        );
       }
     }
     expect(violations).toEqual([]);

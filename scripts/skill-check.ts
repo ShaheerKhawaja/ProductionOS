@@ -11,18 +11,9 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { parseFrontmatter, readFileOrNull, walkFiles, listMdFiles, ROOT } from './lib/shared';
 
-const ROOT = path.resolve(import.meta.dir, '..');
-
-// ─── Helpers ────────────────────────────────────────────────
-
-function readFileOrNull(filePath: string): string | null {
-  try {
-    return fs.readFileSync(filePath, 'utf-8');
-  } catch {
-    return null;
-  }
-}
+// ─── Helpers (remaining, not in shared.ts) ──────────────────
 
 function isValidJson(content: string): boolean {
   try {
@@ -31,73 +22,6 @@ function isValidJson(content: string): boolean {
   } catch {
     return false;
   }
-}
-
-function listMdFiles(dir: string): string[] {
-  try {
-    return fs.readdirSync(dir).filter(f => f.endsWith('.md'));
-  } catch {
-    return [];
-  }
-}
-
-function parseFrontmatter(content: string): Record<string, unknown> | null {
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
-  if (!match) return null;
-
-  const frontmatter: Record<string, unknown> = {};
-  const lines = match[1].split('\n');
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const colonIdx = line.indexOf(':');
-    if (colonIdx === -1) continue;
-
-    // Skip indented lines (they are array items belonging to a previous key)
-    if (line.startsWith(' ') || line.startsWith('\t')) continue;
-
-    const key = line.slice(0, colonIdx).trim();
-    const inlineValue = line.slice(colonIdx + 1).trim();
-
-    if (inlineValue === '' || inlineValue === '|' || inlineValue === '>') {
-      // Collect indented list items
-      const items: string[] = [];
-      for (let j = i + 1; j < lines.length; j++) {
-        const trimmed = lines[j].trim();
-        if (trimmed.startsWith('- ')) {
-          items.push(trimmed.slice(2).trim());
-        } else if (trimmed === '' || lines[j].startsWith(' ') || lines[j].startsWith('\t')) {
-          continue;
-        } else {
-          break;
-        }
-      }
-      frontmatter[key] = items.length > 0 ? items : '';
-    } else {
-      // Strip surrounding quotes
-      frontmatter[key] = inlineValue.replace(/^["']|["']$/g, '');
-    }
-  }
-
-  return frontmatter;
-}
-
-function walkFiles(dir: string, ext: string): string[] {
-  const results: string[] = [];
-  try {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules') {
-        results.push(...walkFiles(fullPath, ext));
-      } else if (entry.isFile() && entry.name.endsWith(ext)) {
-        results.push(fullPath);
-      }
-    }
-  } catch {
-    // Directory doesn't exist
-  }
-  return results;
 }
 
 // ─── Check Framework ────────────────────────────────────────

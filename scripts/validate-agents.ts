@@ -12,19 +12,11 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { parseFrontmatter as sharedParseFrontmatter, readFileOrNull, ROOT } from './lib/shared';
 
-const ROOT = path.resolve(import.meta.dir, '..');
 const AGENTS_DIR = path.join(ROOT, 'agents');
 
-// ─── Helpers ────────────────────────────────────────────────
-
-function readFileOrNull(filePath: string): string | null {
-  try {
-    return fs.readFileSync(filePath, 'utf-8');
-  } catch {
-    return null;
-  }
-}
+// ─── Types ──────────────────────────────────────────────────
 
 interface Frontmatter {
   name?: string;
@@ -34,45 +26,9 @@ interface Frontmatter {
   [key: string]: unknown;
 }
 
-function parseFrontmatter(content: string): Frontmatter | null {
-  const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
-  if (!fmMatch) return null;
-
-  const frontmatter: Frontmatter = {};
-  const lines = fmMatch[1].split('\n');
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const colonIdx = line.indexOf(':');
-    if (colonIdx === -1) continue;
-
-    // Skip indented lines (array items)
-    if (line.startsWith(' ') || line.startsWith('\t')) continue;
-
-    const key = line.slice(0, colonIdx).trim();
-    const inlineValue = line.slice(colonIdx + 1).trim();
-
-    if (inlineValue === '' || inlineValue === '|' || inlineValue === '>') {
-      // Collect indented list items
-      const items: string[] = [];
-      for (let j = i + 1; j < lines.length; j++) {
-        const trimmed = lines[j].trim();
-        if (trimmed.startsWith('- ')) {
-          items.push(trimmed.slice(2).trim());
-        } else if (trimmed === '' || lines[j].startsWith(' ') || lines[j].startsWith('\t')) {
-          continue;
-        } else {
-          break;
-        }
-      }
-      (frontmatter as Record<string, unknown>)[key] = items.length > 0 ? items : '';
-    } else {
-      (frontmatter as Record<string, unknown>)[key] = inlineValue.replace(/^["']|["']$/g, '');
-    }
-  }
-
-  return frontmatter;
-}
+/** Thin typed wrapper — delegates to shared.ts */
+const parseFM = (content: string): Frontmatter | null =>
+  sharedParseFrontmatter(content) as Frontmatter | null;
 
 // ─── Validation ─────────────────────────────────────────────
 
@@ -116,7 +72,7 @@ function validateAgent(file: string, allAgentNames: Set<string>): AgentValidatio
   result.lineCount = lines.length;
 
   // 1. Parse frontmatter
-  const fm = parseFrontmatter(content);
+  const fm = parseFM(content);
   if (!fm) {
     result.status = 'invalid';
     result.issues.push('No YAML frontmatter');
