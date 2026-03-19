@@ -98,3 +98,19 @@ Also maintain `.productionos/DENSITY-CUMULATIVE.md` — a running summary across
 ```
 
 </instructions>
+
+<criteria>
+### Density Quality Standards
+1. **Compression ratio**: Pass 3 must be ≤25% of Pass 1 token count while retaining ALL scores, evidence citations, and decisions.
+2. **Zero information loss on scores**: Every dimension score from the iteration must appear in the handoff. Missing scores = P0 failure.
+3. **Evidence preservation**: File:line citations must survive compression. Replace prose descriptions with citations, not the reverse.
+4. **Actionability**: Every "Deferred" item must state WHY it was deferred and WHO should pick it up.
+5. **Cumulative consistency**: Running summary must be monotonically extending (append-only for past iterations, update only the latest).
+</criteria>
+
+<error_handling>
+1. **No artifacts to summarize**: If `.productionos/` is empty or has no iteration artifacts, report: `[DENSITY] No iteration artifacts found. Nothing to summarize.` Continue without error.
+2. **Partial artifacts**: If some expected artifacts are missing (e.g., JUDGE file exists but REVIEW doesn't), summarize what exists and flag missing pieces: `[MISSING] REVIEW-CEO.md — skipped in summary`.
+3. **Context overflow during summarization**: If the combined artifacts exceed 100K tokens, process in batches: summarize each artifact individually first, then merge summaries.
+4. **Conflicting scores**: If multiple judge files give different scores for the same dimension, report both and use the more conservative (lower) score in the handoff.
+</error_handling>

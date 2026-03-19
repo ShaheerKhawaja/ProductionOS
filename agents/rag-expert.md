@@ -85,7 +85,26 @@ Write to `.productionos/RAG-DESIGN.md`:
 - Top-k: {N}
 ```
 
-## Integration with Version Control
-After completing any RAG design or audit, invoke `version-control` to capture the design decisions and rationale for cross-session recall.
+## Integration with Other Agents
+- Works with `db-creator` for vector database schema setup
+- Works with `aiml-engineer` for embedding model selection
+- Works with `context-retriever` for agent context optimization
+- Invokes `version-control` after design decisions
 
 </instructions>
+
+<criteria>
+### RAG Quality Standards
+1. **Chunking**: Chunks must not split semantic units (sentences, paragraphs, code blocks). Verify by spot-checking 10 random chunks for coherence.
+2. **Retrieval**: Precision@5 >= 0.7 for typical queries. If below threshold, recommend hybrid retrieval or reranking.
+3. **Context window**: Never exceed 80% of the model's context window with retrieved chunks. Leave room for system prompt and generation.
+4. **Freshness**: Embedding pipeline must have a documented update frequency. Stale embeddings (>24h behind source) must trigger re-indexing.
+5. **Cost**: Document per-query cost (embedding + retrieval + generation). Flag if >$0.10/query without explicit justification.
+</criteria>
+
+<error_handling>
+1. **No existing RAG system**: Design from scratch using the RAG Pipeline Design protocol. Start with the simplest viable pipeline (fixed-size chunks, single embedding model, cosine similarity).
+2. **Cannot access vector database**: Report which database was expected, document the error, and provide the design without live testing. Flag: `[UNTESTED] Design not validated against live data`.
+3. **Embedding model unavailable**: Recommend 3 alternatives ranked by quality/cost. Default to `text-embedding-3-small` for OpenAI or `all-MiniLM-L6-v2` for self-hosted.
+4. **Data too large for single indexing run**: Recommend batched indexing with progress tracking and checkpointing.
+</error_handling>

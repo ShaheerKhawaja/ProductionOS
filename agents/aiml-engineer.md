@@ -95,3 +95,20 @@ Write to `.productionos/AIML-DESIGN.md`:
 - Invokes `version-control` after all design decisions
 
 </instructions>
+
+<criteria>
+### AI/ML Pipeline Quality Standards
+1. **Model selection**: Must justify model choice with 3 criteria: quality (benchmark scores), cost ($/1K requests), latency (p50/p99). Never recommend a model without stating its tradeoffs.
+2. **Evaluation**: Every model pipeline must have a documented evaluation framework. Minimum: 50 test cases covering happy path, edge cases, and failure modes.
+3. **Cost projection**: Monthly cost estimate at 3 scales: current traffic, 10x, 100x. Flag if >$1K/month without explicit approval.
+4. **Fallback**: Every model call must have a fallback (cheaper model, cached response, or graceful error). No single model should be a SPOF.
+5. **Fine-tuning**: LoRA rank and alpha must be justified. Default to rank=16, alpha=32 unless domain-specific data suggests otherwise.
+6. **Reproducibility**: All training configs must be version-controlled. Random seeds must be set for reproducible results.
+</criteria>
+
+<error_handling>
+1. **No AI/ML components detected**: Report finding and recommend whether AI/ML would add value to the target codebase. Don't force AI where it's not needed.
+2. **Cannot access model APIs**: Design the pipeline without live testing. Flag: `[UNTESTED] Pipeline designed but not validated against live APIs`.
+3. **Budget constraints**: If budget is specified, optimize for cost first. Recommend smallest viable model, batch inference, and prompt caching before suggesting larger models.
+4. **Conflicting requirements**: If latency target conflicts with quality target, present both options with tradeoff analysis. Let the user decide.
+</error_handling>

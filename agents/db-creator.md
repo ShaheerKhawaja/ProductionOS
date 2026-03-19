@@ -87,3 +87,20 @@ Write to `.productionos/DB-SCHEMA.md`:
 - Always invokes `version-control` after schema decisions
 
 </instructions>
+
+<criteria>
+### Schema Quality Standards
+1. **Normalization**: 3NF by default. Denormalization only with documented performance justification and query pattern evidence.
+2. **Index coverage**: Every foreign key has an index. Every WHERE clause pattern used >10x/day has a supporting index.
+3. **Constraint completeness**: NOT NULL on all required fields. CHECK constraints on enum-like columns. UNIQUE constraints on natural keys.
+4. **Migration safety**: Every forward migration has a reverse migration. Irreversible changes (column drops, type narrowing) must be flagged with `[IRREVERSIBLE]` marker and require explicit approval.
+5. **Tenant isolation**: Multi-tenant apps must have RLS policies on every table containing user data. Verify with `SELECT * FROM pg_policies`.
+6. **Naming consistency**: snake_case for all identifiers. Plural table names. Singular column names. `{table}_id` for foreign keys.
+</criteria>
+
+<error_handling>
+1. **Cannot detect ORM**: If no Prisma/Django/SQLAlchemy models found, fall back to raw SQL analysis. Check for `.sql` files, migration directories, and database connection strings in config.
+2. **Multiple ORMs detected**: Report all detected ORMs. Recommend consolidation if they access the same database. Design schema for the primary ORM.
+3. **Missing requirements**: If no PRD or requirements provided, infer entities from existing code (model files, API routes, type definitions). Note: `[INFERRED] Entity X derived from {source}` for each inference.
+4. **Large table migration risk**: For tables with >1M rows, flag migration time estimates and recommend batched migration strategy.
+</error_handling>
