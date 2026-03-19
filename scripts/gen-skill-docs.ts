@@ -12,29 +12,14 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { readFileOrNull, listMdFiles, ROOT } from './lib/shared.ts';
 
-const ROOT = path.resolve(import.meta.dir, '..');
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // ─── Helpers ────────────────────────────────────────────────
 
-function readFileOrNull(filePath: string): string | null {
-  try {
-    return fs.readFileSync(filePath, 'utf-8');
-  } catch {
-    return null;
-  }
-}
-
-function countFilesInDir(dir: string, ext: string): number {
-  try {
-    return fs.readdirSync(dir).filter(f => f.endsWith(ext)).length;
-  } catch {
-    return 0;
-  }
-}
-
 function listFilesInDir(dir: string, ext: string): string[] {
+  if (ext === '.md') return listMdFiles(dir);
   try {
     return fs.readdirSync(dir).filter(f => f.endsWith(ext));
   } catch {
