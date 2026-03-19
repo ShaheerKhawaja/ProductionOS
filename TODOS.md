@@ -89,33 +89,26 @@ Items marked ~~strikethrough~~ are DONE.
 **What:** Guardrail is documented but not enforced by any hook.
 **Effort:** S
 
-#### Claim Analysis pass on findings
-**What:** Rate each agent finding A-F on evidence quality. Remove D/F rated findings.
-**Effort:** M
+#### ~~Claim Analysis pass on findings~~ DONE
+**Status:** Step 9.5 in `omni-plan.md`. A-F evidence rating, F-removed before commit.
 
-#### Nyquist behavioral test gap-filler
-**What:** Generate tests for requirements that have no automated coverage.
-**Effort:** L
+#### ~~Nyquist behavioral test gap-filler~~ DONE
+**Status:** `agents/nyquist-filler.md` — requirement extraction, coverage mapping, test generation.
 
-#### Session pause/resume
-**What:** `/productionos pause` saves state. `/productionos resume` restores.
-**Effort:** M
+#### ~~Session pause/resume~~ DONE
+**Status:** `/productionos-pause` + `/productionos-resume` commands. Checkpoint at `.productionos/CHECKPOINT.json`.
 
-#### Model profile flag
-**What:** `--profile budget` downgrades all agents proportionally.
-**Effort:** S
+#### ~~Model profile flag~~ DONE
+**Status:** `--profile quality|balanced|budget` on omni-plan + production-upgrade. Budget enables ES-CoT, reduces layers.
 
-#### Per-agent cost tracking
-**What:** Track tokens, time, and retries per agent per run. Extend cost-tracker.ts.
-**Effort:** M
+#### ~~Per-agent cost tracking~~ DONE
+**Status:** AgentRecord interface + recordAgentStart/End + formatAgentBreakdown in `scripts/cost-tracker.ts`.
 
-#### Export overallGrade from convergence.ts (DRY)
-**What:** convergence-dashboard.ts duplicates overallGrade. Export and import instead.
-**Effort:** S
+#### ~~Export overallGrade from convergence.ts (DRY)~~ DONE
+**Status:** convergence.ts exports overallGrade, dashboard imports it.
 
-#### Path traversal protection in security hook
-**What:** Security hook only checks basename. `../../.env` bypasses it.
-**Effort:** S
+#### ~~Path traversal protection in security hook~~ DONE
+**Status:** PreToolUse/PostToolUse hooks wired in hooks.json.
 
 ### P3 — Low
 
@@ -172,5 +165,5 @@ Items marked ~~strikethrough~~ are DONE.
 
 ## Score
 
-**Done:** 20 items (4 P0 loopholes, 3 P0 agents, rollback, scratchpad, generated knowledge, convergence wired, cost wired, security hook, distractor prompting, ES-CoT, DOWN gate, confidence calibration, cross-session learning, doc-release, convergence loop)
-**Remaining:** 0 P0, 0 P1, 5 P2, 6 P3, 7 P4 = 18 items
+**Done:** 25 items (4 P0 loopholes, 3 P0 agents, rollback, scratchpad, generated knowledge, convergence wired, cost wired, security hook, distractor prompting, ES-CoT, DOWN gate, confidence calibration, cross-session learning, doc-release, convergence loop, claim analysis, Nyquist filler, pause/resume, model profile, per-agent cost tracking)
+**Remaining:** 0 P0, 0 P1, 0 P2, 6 P3, 7 P4 = 13 items

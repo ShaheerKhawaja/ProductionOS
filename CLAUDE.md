@@ -1,6 +1,6 @@
 # ProductionOS 5.3 — Your AI Engineering Team
 
-48-agent AI engineering team with 15 commands that turn Claude Code into a full engineering department. Built for solo founders and small teams who need 10-person team quality from 1 person + AI. Recursive convergence, tri-tiered evaluation, 9-layer prompt composition, executable convergence engine, cost tracking, and security enforcement.
+49-agent AI engineering team with 17 commands that turn Claude Code into a full engineering department. Built for solo founders and small teams who need 10-person team quality from 1 person + AI. Recursive convergence, tri-tiered evaluation, 10-layer prompt composition, executable convergence engine, per-agent cost tracking, and security enforcement.
 
 ## Commands
 
@@ -30,6 +30,8 @@
 /context-engineer [target]     Token-optimized context packaging
 /logic-mode [idea]             Business idea validation pipeline
 /learn-mode [topic]            Interactive code tutor
+/productionos-pause            Save pipeline state for later resumption
+/productionos-resume           Resume paused pipeline from checkpoint
 /productionos-update           Self-update from GitHub
 /productionos-help             Usage guide and workflows
 ```
