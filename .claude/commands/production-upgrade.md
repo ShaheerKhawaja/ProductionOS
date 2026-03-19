@@ -1,6 +1,6 @@
 ---
 name: production-upgrade
-description: "Run the full product upgrade pipeline — 32-agent iterative review with CEO/Engineering/UX/QA parallel loops"
+description: "Run the full product upgrade pipeline — 49-agent iterative review with CEO/Engineering/UX/QA parallel loops"
 arguments:
   - name: mode
     description: "Pipeline mode: full | audit | ux | fix | validate"

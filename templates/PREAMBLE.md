@@ -11,12 +11,15 @@ Every command should run this preamble before executing. It provides:
 ### Step 0A: Environment Check
 
 ```bash
+# Detect plugin root (works from any working directory)
+PLUGIN_ROOT="${HOME}/.claude/plugins/marketplaces/productupgrade"
+
 # Read version
-VERSION=$(cat "${CLAUDE_PLUGIN_ROOT}/VERSION" 2>/dev/null || echo "unknown")
+VERSION=$(cat "${PLUGIN_ROOT}/VERSION" 2>/dev/null || echo "unknown")
 echo "ProductionOS ${VERSION}"
 
 # Count available agents
-AGENT_COUNT=$(ls "${CLAUDE_PLUGIN_ROOT}/agents/"*.md 2>/dev/null | wc -l | tr -d ' ')
+AGENT_COUNT=$(ls "${PLUGIN_ROOT}/agents/"*.md 2>/dev/null | wc -l | tr -d ' ')
 echo "Agents: ${AGENT_COUNT}"
 
 # Check workspace type
