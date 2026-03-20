@@ -1,11 +1,13 @@
 {
+  "_meta": "ProductionOS v6.0 — 55 agents | 18 commands | 9 hook scripts",
   "SessionStart": [
     {
-      "matcher": "startup|resume",
+      "matcher": "startup|resume|clear|compact",
       "hooks": [
         {
           "type": "command",
-          "command": "echo 'ProductionOS 5.3 — Your AI Engineering Team\n55 agents | 17 commands | 10-layer prompts | 118 tests passing\n\nStart here:\n  /production-upgrade      Audit + fix any codebase\n  /productionos-help       Usage guide\n\nScale up:\n  /omni-plan               13-step pipeline with tri-tiered judging\n  /auto-swarm \"task\"       Parallel agent swarm\n  /deep-research [topic]   8-phase research\n  /security-audit          7-domain security sweep\n\nMax power:\n  /omni-plan-nth           Recursive until 10/10\n  /auto-swarm-nth \"task\"   Recursive swarm (100% coverage)\n  /max-research [topic]    500-1000 agents (nuclear)\n\nTools:\n  /agentic-eval /context-engineer /logic-mode /learn-mode\n  /productionos-pause /productionos-resume /productionos-update'; command -v bun >/dev/null 2>&1 || echo 'WARNING: bun not installed — validation scripts unavailable. Core commands still work.'"
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh\"",
+          "async": false
         }
       ]
     }
@@ -16,7 +18,13 @@
       "hooks": [
         {
           "type": "command",
-          "command": "bash ~/.claude/plugins/marketplaces/productupgrade/hooks/protected-file-guard.sh"
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/protected-file-guard.sh\"",
+          "statusMessage": "ProductionOS: File guard..."
+        },
+        {
+          "type": "command",
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/pre-edit-security.sh\"",
+          "statusMessage": "ProductionOS: Security scan..."
         }
       ]
     }
@@ -27,7 +35,40 @@
       "hooks": [
         {
           "type": "command",
-          "command": "bash ~/.claude/plugins/marketplaces/productupgrade/hooks/self-learn.sh"
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/self-learn.sh\"",
+          "async": true
+        },
+        {
+          "type": "command",
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/post-edit-telemetry.sh\"",
+          "async": true
+        },
+        {
+          "type": "command",
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/post-edit-review-hint.sh\"",
+          "async": true
+        }
+      ]
+    },
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/post-bash-telemetry.sh\"",
+          "async": true
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/stop-session-handoff.sh\"",
+          "async": true
         }
       ]
     }

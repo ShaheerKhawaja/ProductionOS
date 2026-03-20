@@ -1,5 +1,36 @@
 # Changelog
 
+## [6.0.0] - 2026-03-20
+
+### Added — Native Embedding Architecture
+- **Hook infrastructure** — 9 hook scripts across SessionStart/PreToolUse/PostToolUse/Stop (was: 1 banner)
+- **PreToolUse security scan** — Detects edits to auth/payment/credential files, emits advisory
+- **PostToolUse telemetry** — Logs all edits and bash commands to analytics JSONL
+- **PostToolUse review hints** — Suggests code review after 10+ edits per session
+- **Stop session handoff** — Auto-generates session summary with event counts and security edits
+- **Stop instinct extraction** — Extracts patterns from session analytics at session end
+- **CLI tools (bin/)** — `pos-init`, `pos-config`, `pos-analytics`, `pos-update-check`, `pos-review-log`, `pos-telemetry`
+- **Persistent state (~/.productionos/)** — Config, analytics, sessions, instincts, review-log, cache
+- **Auto-activating skills** — 4 skills with filePattern/bashPattern metadata (security-scan, productionos, frontend-audit, continuous-learning)
+- **Declarative agents** — All 55 agents with YAML frontmatter (model, tools, subagent_type, stakes)
+- **Stakes classification** — HumanLayer-inspired LOW/MEDIUM/HIGH on all agents
+- **Red Flags** — Behavioral guardrails (anti-patterns) on all 55 agents
+- **Preamble pattern** — Universal init template for all skills (config, sessions, analytics)
+- **`/frontend-upgrade`** — CEO vision + eng review + parallel swarm execution pipeline
+- **Continuous learning skill** — Instinct-based learning with confidence scoring and auto-promotion
+
+### Changed
+- **hooks.json** — From inline echo banner to 4 hook types with 8 entries referencing script files
+- **CLAUDE.md** — Rewritten for v6.0 with hook architecture, CLI tools, auto-activation, stakes
+- **plugin.json** — Updated description and version to 6.0.0
+
+### Architecture (12-Factor-Agents + HumanLayer)
+- Small, focused hooks (not monolithic orchestration)
+- Stakes classification on every agent (HIGH/MEDIUM/LOW)
+- Human contact via tools pattern (approval as tool call)
+- Unified state at ~/.productionos/ (not per-project only)
+- Session awareness via PID tracking
+
 ## [5.3.0] - 2026-03-19
 
 ### Added

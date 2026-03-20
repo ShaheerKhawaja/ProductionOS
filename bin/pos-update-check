@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# ProductionOS — version check with snooze support
+set -euo pipefail
+STATE_DIR="${PRODUCTIONOS_HOME:-$HOME/.productionos}"
+CURRENT="6.0.0"
+
+SNOOZE_FILE="$STATE_DIR/cache/update-snoozed"
+if [ -f "$SNOOZE_FILE" ]; then
+  SNOOZE_UNTIL=$(cat "$SNOOZE_FILE")
+  NOW=$(date +%s)
+  if [ "$NOW" -lt "$SNOOZE_UNTIL" ] 2>/dev/null; then
+    exit 0
+  fi
+fi
+
+echo "ProductionOS v$CURRENT"
