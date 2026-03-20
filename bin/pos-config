@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# ProductionOS — config manager (get/set/list)
+set -euo pipefail
+STATE_DIR="${PRODUCTIONOS_HOME:-$HOME/.productionos}"
+CONFIG="$STATE_DIR/config/settings.json"
+
+if [ ! -f "$CONFIG" ]; then
+  echo "ERROR: No config found. Run pos-init first." >&2
+  exit 1
+fi
+
+case "${1:-list}" in
+  get)
+    python3 -c "import json; print(json.load(open('$CONFIG')).get('${2:-}',''))"
+    ;;
+  set)
+    python3 -c "
+import json
+d=json.load(open('$CONFIG'))
+key='${2:-}'
+val='${3:-}'
+if val.lower() in ('true','false'): val = val.lower() == 'true'
+elif val.isdigit(): val = int(val)
+d[key]=val
+json.dump(d, open('$CONFIG','w'), indent=2)
+print(f'Set {key}={val}')
+"
+    ;;
+  list)
+    python3 -c "import json; [print(f'  {k}: {v}') for k,v in json.load(open('$CONFIG')).items()]"
+    ;;
+  *)
+    echo "Usage: pos-config [get|set|list] [key] [value]"
+    ;;
+esac

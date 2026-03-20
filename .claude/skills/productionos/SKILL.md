@@ -1,126 +1,263 @@
 ---
 name: productionos
-description: "ProductionOS 5.3 — Your AI engineering team. 55 agents that fill roles you can't hire fast enough: code reviewer, QA engineer, security auditor, solutions architect, CTO reviewer, release manager. Built by a solo founder shipping a complex SaaS at hackathon pace."
+description: "ProductionOS v6.0 — AI engineering team with 40 agents, 15+ hooks, native embedding. Auto-activates on project files, security-sensitive edits, and CI/CD workflows. Use when upgrading, auditing, fixing, or improving any product codebase."
+metadata:
+  filePattern:
+    - "**/package.json"
+    - "**/pyproject.toml"
+    - "**/CLAUDE.md"
+    - "**/.productionos/**"
+    - "**/docker-compose*.yml"
+    - "**/.github/workflows/**"
+  bashPattern:
+    - "productupgrade"
+    - "pos-config"
+    - "pos-analytics"
+    - "production-upgrade"
+    - "auto-swarm"
+    - "omni-plan"
+  priority: 90
 ---
 
-# ProductionOS 5.3 — Your AI Engineering Team
+# ProductUpgrade V2.1 — Autonomous Self-Learning Pipeline
 
-## The Problem
+A cognitive architecture that takes any codebase from current state to production-ready using 20 specialized agents, recursive convergence with LLM-as-Judge evaluation, 7-layer composed prompting, and RAG-powered context retrieval across iteration boundaries.
 
-You're building a production SaaS — complex backend, frontend, infrastructure, security, billing — and you need the output of a 10-person engineering team. You have one person. You think in architecture and systems, not syntax. You need someone to review your code, find your security holes, validate your business logic, and ship without breaking things.
+## When to Use
 
-## The Solution
+- `/productupgrade` — Auto mode: smart agent selection based on codebase complexity
+- `/productupgrade standard` — Proven 6-phase pipeline, recursive convergence, target 8.0
+- `/productupgrade deep` — Full autonomous self-learning engine, 7 loops, target 10.0
+- `/productupgrade audit` — Discovery + evaluation only (no code changes)
+- `/productupgrade fix` — Execute fixes from a previous audit
+- `/productupgrade validate` — Validate recent changes, score AFTER vs BEFORE
+- `/productupgrade judge` — LLM-as-Judge evaluation only (independent, read-only)
+- `/auto-swarm "task"` — Distributed agent swarm for any research or improvement task
 
-ProductionOS turns Claude Code into a full engineering department. 55 agents fill the roles you can't hire fast enough:
+## Architecture Overview
 
-| Role | What It Does | Key Agents |
-|------|-------------|------------|
-| **Code Reviewer** | Finds bugs, patterns, tech debt across your codebase | code-reviewer, adversarial-reviewer, naming-enforcer |
-| **QA Engineer** | Validates features WORK (not just that files exist), detects stubs and mock data | stub-detector, verification-gate, test-architect |
-| **Security Auditor** | OWASP Top 10, MITRE ATT&CK, dependency vulns, secret exposure | security-hardener, vulnerability-explorer |
-| **Solutions Architect** | Reviews architecture, identifies SPOFs, scales your design | dynamic-planner, comparative-analyzer, migration-planner |
-| **CTO Reviewer** | Challenges your own decisions with adversarial thinking, strategic review | llm-judge, debate-tribunal, business-logic-validator |
-| **Release Manager** | Ships with guardrails — pre-commit review, test gates, rollback on regression | guardrails-controller, self-healer, gitops |
-| **Research Analyst** | Deep-dives any topic with citation verification before you build | deep-researcher, research-pipeline, ecosystem-scanner |
+### 20 Agents
 
-## Origin Story
+| Agent | Role | Model | Access |
+|-------|------|-------|--------|
+| llm-judge | Independent quality evaluator, convergence control | opus | Read-only |
+| deep-researcher | Techstack/competitor/library research | opus | Read + Web |
+| code-reviewer | Systematic code review with confidence scoring | — | Read-only |
+| ux-auditor | UX/UI audit with a11y and competitor comparison | — | Read + Bash |
+| dynamic-planner | Finding synthesis + prioritized batch planning | — | Read + Write |
+| business-logic-validator | Business rule validation | — | Read-only |
+| dependency-scanner | CVE/license/abandonment scanning | — | Read + Bash |
+| api-contract-validator | Frontend↔Backend contract validation | — | Read-only |
+| naming-enforcer | Cross-layer naming convention audit | — | Read-only |
+| refactoring-agent | Dead code, complexity, duplication | — | Read + Edit |
+| database-auditor | Schema, query, migration audit | — | Read + Bash |
+| adversarial-reviewer | Red-team hostile critique (no code changes) | — | Read-only |
+| thought-graph-builder | Graph of Thought aggregation across iterations | opus | Read + Write |
+| persona-orchestrator | 3-persona evaluation (Technical/Human/Meta) | — | Read-only |
+| density-summarizer | Chain of Density inter-iteration summaries | — | Read + Write |
+| context-retriever | RAG-in-pipeline context management | — | Read + Write |
+| frontend-scraper | Playwright screenshot + Lighthouse capture | — | Read + Bash |
+| vulnerability-explorer | OWASP Top 10 + attack surface mapping | — | Read + Bash |
+| swarm-orchestrator | Distributed swarm coordination | — | All |
+| guardrails-controller | Safety + human-in-the-loop enforcement | — | Read-only |
 
-Born from a CEO Strategic Review of Entropy Studio (an AI video production SaaS) that found:
-- "Extraordinary engine wrapped in ordinary interface"
-- 11 fake-data code paths masquerading as working features
-- 5 of 12 agents were YAML stubs
-- Silent failure mode where billing doesn't fire but API costs accrue
-- Verdict: DO NOT LAUNCH. Fix quality first.
+### 7-Layer Prompt Composition (Deep/Swarm Mode)
 
-ProductionOS was built to systematically find and fix quality gaps at a scale one person can't do manually. The recursive convergence loop mirrors how the founder works — iterate, self-critique honestly, loop until 10/10 or prove it's unreachable.
+Every agent in deep mode receives composed prompts with all 7 layers:
 
-## How To Use It
+1. **Emotion Prompting** — Sets stakes and thoroughness (+8-15% accuracy, Li et al. 2023)
+2. **Meta-Prompting** — Forces reflection on approach and blind spots before action
+3. **Context Retrieval** — RAG from /mem-search + context7 MCP + file artifacts
+4. **Chain of Thought (CoT)** — Step-by-step reasoning: OBSERVE → ANALYZE → IMPACT → SEVERITY → FIX
+5. **Tree of Thought (ToT)** — 3-branch exploration: THE OBVIOUS / THE SYSTEMIC / THE UNEXPECTED
+6. **Graph of Thought (GoT)** — Finding network with edges: CAUSES / BLOCKS / AMPLIFIES / RELATED_TO
+7. **Chain of Density (CoD)** — 3-pass compression: skeletal → evidence-rich → action-loaded
 
-### Just starting? Run this:
+### Convergence Engine
+
+The pipeline runs in a recursive loop controlled by the LLM-as-Judge:
+
 ```
-/production-upgrade
-```
-Discovers your stack → deploys 7 review agents → scores 10 dimensions → generates fix plan → executes fixes → shows BEFORE→AFTER. Takes 10-30 min, costs ~$1-5.
-
-### Need deeper analysis?
-```
-/omni-plan                   Full 13-step pipeline with CEO + Engineering + Design review
-/deep-research [topic]       Research anything with 8 phases and citation verification
-/security-audit              7-domain security sweep (OWASP/MITRE/NIST)
-```
-
-### Need maximum power?
-```
-/omni-plan-nth               Recursive until 10/10 across ALL dimensions
-/auto-swarm-nth "task"       Recursive parallel swarm — 100% coverage
-/max-research [topic]        500-1000 agents in ONE wave (extreme resource usage)
-```
-
-### Utility commands:
-```
-/auto-swarm "task"           7-77 parallel agents for any task
-/agentic-eval                CLEAR v2.0 quality evaluation
-/context-engineer            Optimize context for downstream agents
-/logic-mode [idea]           Validate a business idea end-to-end
-/learn-mode [topic]          Interactive tutor — explain any codebase
-/productionos-update         Self-update from GitHub
-/productionos-help           Full usage guide
-```
-
-## What Makes This Different
-
-**Recursive convergence.** Other tools do one review pass. ProductionOS loops: review → plan → fix → validate → re-score. If quality drops, it rolls back. If progress stalls, it pivots strategy. Executable TypeScript convergence engine with Algorithm 1 (score-based) + Algorithm 6 (EMA velocity).
-
-**Evaluators can't grade their own work.** Agents that fix code are different from agents that judge it. The judge is read-only — no Write or Edit tools. This prevents the self-grading inflation that plagues single-pass AI code review.
-
-**Stub detection.** The stub-detector agent (born from finding 11 fake-data paths in Entropy Studio) distinguishes "file exists" from "feature works" — catches placeholder components, mock data, `NotImplementedError`, hardcoded arrays, and decorative integrations.
-
-**Pre-pipeline user decisions.** The discuss-phase agent captures what you actually want BEFORE 55 agents start optimizing. Prevents the pipeline from running in the wrong direction.
-
-**Observable execution.** Cost estimation before every run. Terminal convergence dashboard showing real-time grade progression. Security hooks blocking writes to .env, keys, certs.
-
-## The 55 Agents
-
-Organized by the role they fill, not the version they were added in:
-
-**Your Engineering Team (28 agents that do the work):**
-code-reviewer, adversarial-reviewer, ux-auditor, database-auditor, api-contract-validator, dependency-scanner, naming-enforcer, business-logic-validator, security-hardener, vulnerability-explorer, test-architect, performance-profiler, stub-detector, refactoring-agent, self-healer, frontend-designer, asset-generator, gitops, deep-researcher, research-pipeline, reverse-engineer, comms-assistant, aiml-engineer, db-creator, e2e-architect, infra-setup, scaffold-generator, rag-expert
-
-**Your Quality Gates (12 agents that evaluate and decide):**
-llm-judge, debate-tribunal, discuss-phase, plan-checker, verification-gate, gap-analyzer, convergence-monitor, decision-loop, persona-orchestrator, comparative-analyzer, intake-interviewer, nyquist-filler
-
-**Your Infrastructure (15 agents that coordinate and optimize):**
-dynamic-planner, swarm-orchestrator, recursive-orchestrator, guardrails-controller, context-retriever, density-summarizer, thought-graph-builder, ecosystem-scanner, metaclaw-learner, migration-planner, frontend-scraper, architecture-designer, prd-generator, requirements-tracer, version-control
-
-## Tech Under The Hood
-
-- **10-layer prompt composition:** Emotion → Meta → Scratchpad → Context → CoT → ToT → GoT → CoD → Generated Knowledge → Distractor-Augmented
-- **Executable convergence engine:** TypeScript implementation of score-based + EMA velocity algorithms
-- **Cost tracking:** Per-run token estimation and USD cost tracking with terminal dashboard
-- **Security hooks:** PreToolUse guard blocks writes to .env, keys, certs, production configs
-- **CI/CD:** GitHub Actions pipeline (validate + lint + convergence check)
-- **118 tests passing** across 5 test files
-- **Zero runtime dependencies**
-
-## Validation
-
-```bash
-cd ~/.claude/plugins/marketplaces/productupgrade
-bun run skill:check    # 10/10 health score
-bun run validate       # 55/55 agents valid
-bun test               # 118 tests passing
+Iteration N → UNDERSTAND → ENRICH → EVALUATE → FIX → VERIFY → LEARN → CONVERGE
+  │
+  ├── SUCCESS:      grade >= target_grade
+  ├── CONVERGED:    delta < 0.15 for 2 consecutive iterations
+  ├── MAX_REACHED:  iteration >= max_iterations
+  ├── DEGRADED:     any dimension decreased by > 0.5 → HALT, rollback, investigate
+  │                 (decreases <= 0.5 are normal variance — log but continue)
+  ├── OSCILLATION:  dimension went up-down-up (3+ direction changes) → lock, focus elsewhere
+  └── CONTINUE:     feed 2 weakest dimensions to next iteration
 ```
 
-## Installation
+## Three Execution Modes
 
-```bash
-# One command (when published)
-npx productionos@latest
+### Auto Mode (`/productupgrade` or `/productupgrade auto`)
+- Analyzes codebase in 30 seconds (tech stack, LOC, complexity)
+- Dynamically selects only relevant agents
+- No recursive loops — single pass with parallel execution
+- Complexity classification: S (<500 LOC) → 3 agents, M (500-5K) → 7 agents, L (5K-50K) → full pipeline 3 iterations, XL (50K+) → escalate to deep
 
-# Plugin marketplace
-claude plugin install productupgrade
+### Standard Mode (`/productupgrade standard`)
+- Proven 6-phase pipeline: DISCOVER → REVIEW → PLAN → EXECUTE → VALIDATE → JUDGE
+- Enhanced with context7 library verification, CoD summaries, and Emotion Prompting on judge
+- Target grade: 8.0/10 (configurable)
+- Max 7 iterations, up to 54 agent dispatches per iteration
 
-# Manual
-git clone https://github.com/ShaheerKhawaja/ProductionOS.git \
-  ~/.claude/plugins/marketplaces/productupgrade
+### Deep Mode (`/productupgrade deep`)
+- Full autonomous self-learning engine
+- 7 progressive loops: UNDERSTAND → ENRICH → EVALUATE → FIX → VERIFY → LEARN → CONVERGE
+- All 7 prompt composition layers active on every agent
+- Virtualized evaluation personas (Technical, Human Impact, Meta-Reasoning)
+- Reflexion memory for cross-iteration learning
+- Dynamic /plan ↔ /code-review cycling with anti-thrash (max 3 switches)
+- Target grade: 10.0 ALWAYS
+- Iterations 6-7 require human approval
+
+### Sub-Modes
+- `audit` — UNDERSTAND + EVALUATE only (no code changes)
+- `fix` — Execute fixes from `.productupgrade/EXECUTION/UPGRADE-PLAN.md`
+- `validate` — VERIFY only on recent changes
+- `judge` — Independent LLM-as-Judge scoring only
+
+## 10-Dimension Evaluation Rubric
+
+| Dimension | 1-2 | 3-4 | 5-6 | 7-8 | 9-10 |
+|-----------|-----|-----|-----|-----|------|
+| Code Quality | Bugs | Works | Clean | Elegant | Exemplary |
+| Security | CVEs | Basic | OWASP | Pen-tested | Hardened |
+| Performance | Slow | OK | Fast | Optimized | Edge-optimized |
+| UX/UI | Ugly | Functional | Good | Polished | Delightful |
+| Test Coverage | 0% | 30% | 60% | 80% | 95%+ |
+| Accessibility | None | Some | AA | AAA | AAA+Audit |
+| Documentation | None | README | API docs | Full | Interactive |
+| Error Handling | Crash | Catch | Log | Recovery | Self-heal |
+| Observability | None | Logs | Metrics | Tracing | Dashboards |
+| Deployment Safety | YOLO | CI | CD | Canary | Blue-green |
+
+## Adaptive Toolchain Detection
+
+The validation gate uses detected commands, NOT hardcoded ones:
+
 ```
+IF package.json:  lint=scripts.lint, test=scripts.test, type=tsc --noEmit
+IF pyproject.toml: lint=ruff check, test=pytest, type=mypy
+IF go.mod:        lint=go vet, test=go test, type=(build IS type check)
+IF Cargo.toml:    lint=cargo clippy, test=cargo test, type=cargo check
+IF none:          SKIP (warn: "No toolchain detected")
+```
+
+LOC counting excludes: `node_modules/`, `vendor/`, `__pycache__/`, `.venv/`, `dist/`, `build/`, `.git/`
+
+## Output File Structure (V2)
+
+```
+.productupgrade/
+├── DISCOVERY/
+│   ├── AUDIT-DISCOVERY.md
+│   ├── AUDIT-COMPETITORS.md
+│   ├── AUDIT-DEPENDENCIES.md
+│   └── AUDIT-VULNERABILITIES.md
+├── REVIEWS/
+│   ├── REVIEW-CEO-EXPAND.md
+│   ├── REVIEW-CEO-HOLD.md
+│   ├── REVIEW-CEO-REDUCE.md
+│   ├── REVIEW-ENGINEERING-ARCH.md
+│   ├── REVIEW-ENGINEERING-ROBUST.md
+│   ├── REVIEW-CODE.md
+│   ├── REVIEW-UX.md
+│   └── REVIEW-BUSINESS-LOGIC.md
+├── THOUGHT-GRAPHS/
+│   ├── THOUGHT-GRAPH-{N}.md
+│   └── THOUGHT-GRAPH-FINAL.md
+├── ITERATIONS/
+│   └── ITERATION-{N}-SUMMARY.md (CoD dense summaries)
+├── JUDGEMENTS/
+│   ├── JUDGE-ITERATION-{N}.md
+│   └── JUDGE-FINAL.md
+├── EXECUTION/
+│   ├── UPGRADE-PLAN.md
+│   ├── UPGRADE-LOG.md
+│   └── CHECKPOINT-*.md
+├── LEARNING/
+│   ├── AGENT-METRICS.md
+│   ├── DECISION-WEIGHTS.md
+│   ├── CONTEXT-METRICS.md
+│   └── LEARNINGS-*.md
+├── SCREENSHOTS/
+│   ├── before/
+│   └── after/
+├── RUBRIC-BEFORE.md
+├── RUBRIC-AFTER.md
+├── REFLEXION-MEMORY.md
+├── CONVERGENCE-LOG.md
+├── TOOLCHAIN.md
+└── FINAL-REPORT.md
+```
+
+## Integrated Skills
+
+Orchestrates these existing skills in the pipeline:
+- `/plan-ceo-review` — CEO strategic review (3 modes: expansion/hold/reduction)
+- `/plan-eng-review` — Engineering deep-dive (architecture + robustness)
+- `/code-review` — Code review on all changes
+- `/qa` — Automated QA testing with health scoring
+- `/browse` — Headless browser for screenshots and testing
+- `/ux-browse` / `/ux-analyze` — UX screenshot capture and vision analysis
+- `/test-driven-development` — TDD spec generation
+- `/deployment-patterns` — Migration and deployment planning
+- `/dispatching-parallel-agents` — Parallel agent dispatch coordination
+
+### MCP Integrations
+- `context7` — Live library doc verification (every phase)
+- `sequential-thinking` — Structured reasoning (EVALUATE, CONVERGE)
+- `memory` — Persistent knowledge graph across sessions (LEARN, UNDERSTAND)
+- `playwright` — Frontend screenshots and E2E testing (VERIFY)
+
+## /auto-swarm Integration
+
+For tasks requiring distributed research across many sources:
+```
+/auto-swarm "task description" --depth ultra --swarm_size 7 --iterations 11
+```
+
+Research depth scaling:
+- `shallow`: 10 sources/query, 30 total — local codebase only
+- `medium`: 50 sources/query, 250 total — + library docs + memory
+- `deep`: 500 sources/query, 5K total — + web + competitors + papers
+- `ultra`: 2000 sources/query, 10K total — + sub-swarms for sub-topics
+
+## Anti-Patterns (What NOT to Do)
+
+1. **Never skip the judge.** Every iteration must be scored independently.
+2. **Never let fix agents self-report quality.** The judge reads code directly.
+3. **Never continue if a dimension decreased by > 0.5.** HALT and investigate.
+4. **Never batch more than 7 fixes.** Larger batches cause merge conflicts.
+5. **Never skip the validation gate.** Broken code must not be committed.
+6. **Never run the judge with the same model context as the fixer.** Independence is critical.
+7. **Never compact without saving a CoD summary first.** Context loss is permanent.
+8. **Never skip the adversarial reviewer in deep mode.** Every fix must survive challenge.
+9. **Never ignore the Human Impact persona.** Technical correctness without user benefit is waste.
+10. **Never target less than the mode's default grade.** Auto adapts, standard=8.0, deep=10.0.
+11. **Never hardcode validation commands.** Use adaptive toolchain detection.
+12. **Never run more than 3 mode switches per iteration.** Anti-thrash protection.
+
+## Guardrails (Non-Negotiable)
+
+### Human-in-the-Loop Checkpoints
+- Pre-launch approval for autonomous operations
+- Pre-commit diff review (unless --auto-commit)
+- Pre-push ALWAYS requires approval
+- Security-critical changes ALWAYS flagged
+- Iteration 3 and 5 checkpoints in deep mode
+- Cost threshold ($5 / 500K tokens) triggers pause
+
+### Safety Boundaries
+- Protected files: .env, keys, certs, production configs
+- Max 15 files per batch, 200 lines per file
+- Automatic rollback on test failure or score regression
+- Scope enforcement: agents cannot modify outside their focus area
+
+### Cost Budgets
+- Session: 2M tokens, 100 agents, 500 web fetches
+- Per iteration: 400K tokens, 14 agents
+- Per swarm agent: 100K tokens, 50 web fetches
