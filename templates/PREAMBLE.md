@@ -33,3 +33,32 @@ echo "ProductionOS | Branch: $_BRANCH | Sessions: $_SESSIONS | Review: $_AUTO_RE
 If `_PROACTIVE` is `"false"`, do not proactively suggest ProductionOS skills.
 If `_AUTO_REVIEW` is `"true"`, run lightweight code review after major edits.
 If `_AUTO_LEARN` is `"true"`, extract patterns at session end.
+If `_SELF_EVAL` is `"true"` (default), run Self-Eval Protocol after every agent action.
+
+## Postamble (runs after every ProductionOS agent action)
+
+After every agent completes its work, run the Self-Eval Protocol (`templates/SELF-EVAL-PROTOCOL.md`):
+
+```bash
+_SELF_EVAL=$(bash "${CLAUDE_PLUGIN_ROOT}/bin/pos-config" get self_eval 2>/dev/null || echo "true")
+```
+
+If `_SELF_EVAL` is `"true"`:
+1. Apply the 7 Questions from SELF-EVAL-PROTOCOL.md to the agent's output
+2. If score >= 8.0: PASS — log and proceed
+3. If score 6.0-7.9: CONDITIONAL — trigger self-heal loop (max 3 iterations)
+4. If score < 6.0: FAIL — block commit, escalate to human
+5. Log all evaluations to `.productionos/self-eval/`
+6. Feed scores into convergence tracking
+
+This is enabled by default. Disable with `pos-config set self_eval false`.
+
+## Context Management
+
+At session start, the `session-context-manager` agent protocol applies:
+- L0 context (< 2K tokens) is always loaded: project identity, branch, goals, constraints
+- L1 context (2K-10K per item) is loaded on demand based on task type
+- L2 context (10K+) is loaded only when explicitly referenced
+- Context checkpoints every 30 minutes or 5 agent dispatches
+- Context compression triggers at 60% window usage
+- Context rot detection monitors for repeated work, contradictions, and score regression

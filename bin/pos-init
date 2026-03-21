@@ -6,11 +6,12 @@ mkdir -p "$STATE_DIR"/{config,analytics,sessions,instincts/{project,global},revi
 if [ ! -f "$STATE_DIR/config/settings.json" ]; then
   cat > "$STATE_DIR/config/settings.json" << 'CONF'
 {
-  "version": "6.0.0",
+  "version": "7.0.0",
   "proactive": true,
   "telemetry": "off",
   "auto_review": true,
   "auto_learn": true,
+  "self_eval": true,
   "review_on_edit": true,
   "security_scan_patterns": ["auth", "payment", "admin", "secret", "credential"],
   "max_agents_per_wave": 7,

@@ -7,8 +7,8 @@
   "plugins": [
     {
       "name": "productionos",
-      "description": "Your AI engineering team — 55 agents, 18 commands, 15+ hooks, native embedding, continuous learning, CLI tools",
-      "version": "6.0.0",
+      "description": "Your AI engineering team — 64 agents, 21 commands, self-eval, design auditing, UX analysis, interactive mockups",
+      "version": "7.0.0",
       "author": {
         "name": "Shaheer Khawaja",
         "email": "shaheer@entropyandco.com"
