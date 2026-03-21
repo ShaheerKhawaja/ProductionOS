@@ -1,5 +1,5 @@
 ---
-name: pos
+name: build-productionos
 description: "ProductionOS smart router — single entry point that routes to the right pipeline based on intent. The ONLY command new users need to know."
 arguments:
   - name: intent
@@ -10,7 +10,7 @@ arguments:
     required: false
 ---
 
-# /pos — ProductionOS Smart Router
+# /build-productionos — ProductionOS Smart Router
 
 You are the ProductionOS entry point. You receive a natural language intent and route to the right command.
 
@@ -109,15 +109,15 @@ After the routed command completes, run self-eval:
 ## Quick Reference (shown on /pos help)
 
 ```
-/pos "audit this project"        → Full codebase audit (/production-upgrade)
-/pos "fix the frontend"          → UI/UX redesign (/designer-upgrade)
-/pos "research auth patterns"    → Deep research (/deep-research)
-/pos "review my PR"              → Code review (/review)
-/pos "ship it"                   → Ship workflow (/ship)
-/pos "debug login bug"           → Systematic debugging (/debug)
-/pos "plan the new feature"      → Strategic planning (/omni-plan-nth)
-/pos "test everything"           → QA testing (/qa)
-/pos "build user profiles"       → Feature development (brainstorm → plan → build)
-/pos "how did I do"              → Self-evaluation (/self-eval session)
-/pos "help"                      → Usage guide (/productionos-help)
+/build-productionos "audit this project"        → Full codebase audit (/production-upgrade)
+/build-productionos "fix the frontend"          → UI/UX redesign (/designer-upgrade)
+/build-productionos "research auth patterns"    → Deep research (/deep-research)
+/build-productionos "review my PR"              → Code review (/review)
+/build-productionos "ship it"                   → Ship workflow (/ship)
+/build-productionos "debug login bug"           → Systematic debugging (/debug)
+/build-productionos "plan the new feature"      → Strategic planning (/omni-plan-nth)
+/build-productionos "test everything"           → QA testing (/qa)
+/build-productionos "build user profiles"       → Feature development (brainstorm → plan → build)
+/build-productionos "how did I do"              → Self-evaluation (/self-eval session)
+/build-productionos "help"                      → Usage guide (/productionos-help)
 ```
