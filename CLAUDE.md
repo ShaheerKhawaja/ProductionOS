@@ -1,23 +1,49 @@
-# ProductionOS 6.0 — The Nervous System
+# ProductionOS 7.0 — The Design Conscience
 
-56-agent AI engineering team with 18 commands, 15+ lifecycle hooks, 6 CLI tools, 4 auto-activating skills, and continuous learning. Native embedding into Claude Code — PreToolUse security scanning, PostToolUse telemetry and code review hints, Stop session handoff, and cross-session instinct extraction. Built for solo founders who need a 10-person engineering team from 1 person + AI.
+64-agent AI engineering team with 21 commands, 15+ lifecycle hooks, 6 CLI tools, 4 auto-activating skills, continuous learning, and self-evaluation. Native embedding into Claude Code with design auditing, interactive HTML mockups, user story generation, and default-on self-evaluation that questions every action. Built for solo founders who need a 10-person engineering + design team from 1 person + AI.
 
-## What's New in v6.0
+## What's New in v7.0
 
-- **Native Hooks** — 9 hook scripts across SessionStart/PreToolUse/PostToolUse/Stop (was: 1 banner)
+### Self-Evaluation (default-on)
+- **Self-Eval Protocol** — 7 questions after every agent action: quality, necessity, correctness, dependencies, completeness, learning, honesty
+- **Quality Loop Controller** — Self-check → Self-eval → Self-heal → Learn cycle on all outputs
+- **Score Gating** — >= 8.0 passes, 6.0-7.9 triggers self-heal loop, < 6.0 blocks and escalates
+- **`/self-eval` command** — Standalone evaluation of last output, session, or git diff
+
+### Design & UX
+- **`/designer-upgrade`** — Full UI/UX redesign: audit → design system → interactive HTML mockups → browser annotation → implementation plan
+- **`/ux-genie`** — User stories from UI guidelines, journey mapping, friction analysis, agent dispatch
+- **Mockup Generator** — Self-contained HTML mockups with annotation overlay, dark mode, responsive preview, side-by-side comparison
+- **Design System Architect** — Token system creation from codebase analysis
+
+### Session Context Management
+- **Progressive context loading** — L0 (always) / L1 (on demand) / L2 (when referenced)
+- **Context rot detection** — Monitors for repeated work, contradictions, quality drift
+- **Automatic compression** — Triggers at 60% context usage, emergency at 80%
+- **Cross-session instinct transfer** — Patterns with confidence > 0.8 persist globally
+
+### v6.0 Foundation (retained)
+- **Native Hooks** — 9 hook scripts across SessionStart/PreToolUse/PostToolUse/Stop
 - **CLI Tools** — `pos-init`, `pos-config`, `pos-analytics`, `pos-update-check`, `pos-review-log`, `pos-telemetry`
 - **Persistent State** — `~/.productionos/` with config, analytics, sessions, instincts, review-log
 - **Auto-Activation** — Skills with filePattern/bashPattern metadata trigger on context
 - **Security Scanning** — PreToolUse hook detects edits to auth/payment/credential files
 - **Continuous Learning** — PostToolUse observation + Stop instinct extraction
-- **Session Handoff** — Auto-generated handoff docs on session end
-- **Review Hints** — After 10+ edits, suggests code review
 - **Stakes Classification** — Each agent tagged LOW/MEDIUM/HIGH (HumanLayer pattern)
-- **Red Flags** — Behavioral guardrails on all 56 agents
+- **Red Flags** — Behavioral guardrails on all 64 agents
 - **Declarative Agents** — YAML frontmatter with model, tools, subagent_type on all agents
-- **Frontend Upgrade** — New `/frontend-upgrade` command (CEO vision + parallel swarm)
 
 ## Commands
+
+### 4 Primary Commands (launch the full suite)
+```
+/omni-plan-nth [target]        THE orchestrator — chains ALL skills, loops until 10/10
+/auto-swarm-nth "task"         Parallel agent swarm — 100% coverage, recursive quality gates
+/production-upgrade [mode]     Full codebase audit + iterative fix convergence
+/designer-upgrade [target]     UI/UX redesign — audit → design system → HTML mockups → browser review
+```
+
+These 4 commands can invoke ANY other command or agent. They are the entry points.
 
 ### Orchestrative (recursive, nth-iteration)
 ```
@@ -31,6 +57,13 @@
 /auto-swarm "task" [--depth]   Distributed agent swarm (shallow|medium|deep|ultra)
 /production-upgrade [mode]     Recursive product audit (full|audit|ux|fix|validate|judge)
 /frontend-upgrade [target]     CEO-enriched frontend transformation pipeline
+/designer-upgrade [target]     UI/UX redesign — audit + design system + HTML mockups
+/ux-genie [target]             User stories + journey maps + friction analysis + agent dispatch
+```
+
+### Quality & Self-Evaluation
+```
+/self-eval [target]            Self-evaluate recent work (last|session|diff|path) — enabled by default
 ```
 
 ### Nuclear Scale
@@ -142,6 +175,20 @@ pos-telemetry       # Log skill usage events
     │   ├── /auto-swarm-nth (Step 9 — execution engine)
     │   └── /ship (Step 13, external)
     │
+    ├── /designer-upgrade (UI/UX redesign pipeline)
+    │   ├── 5 parallel auditors (ux, design-system, frontend, competitors, perf)
+    │   ├── Design system creation (tokens, components, patterns)
+    │   ├── HTML mockup generation (interactive, annotatable)
+    │   ├── Browser-based review (local server, user annotation)
+    │   └── Implementation plan generation
+    │
+    ├── /ux-genie (User experience improvement pipeline)
+    │   ├── Guidelines intake + persona derivation
+    │   ├── User story generation (20+ stories, 10 dimensions)
+    │   ├── Journey mapping (per-persona emotional tracking)
+    │   ├── Friction analysis (8 friction types)
+    │   └── Agent dispatch for fixes (3-wave priority)
+    │
     ├── /frontend-upgrade (CEO vision + parallel swarm execution)
     │   ├── Deep research (competitive parity)
     │   ├── CEO vision (dream state)
@@ -151,12 +198,20 @@ pos-telemetry       # Log skill usage events
     ├── /auto-swarm-nth (parallel execution with recursive quality gates)
     ├── /max-research (NUCLEAR — 500-1000 agents, single massive wave)
     ├── /production-upgrade (structured single-pass audit)
+    ├── /self-eval (standalone or embedded in all above)
     └── Any available external skill (/qa, /browse, /review, etc.)
+
+SELF-EVAL PROTOCOL (cross-cutting — embedded in ALL commands above)
+    │
+    ├── Self-Check (structural validation, < 30s)
+    ├── Self-Eval (7 questions, qualitative assessment)
+    ├── Self-Heal (targeted remediation loop, max 3 iterations)
+    └── Self-Learn (pattern extraction for cross-session instincts)
 ```
 
 ## Agent Loading
 
-Agent definitions live in `agents/` (55 files). All agents have YAML frontmatter with `name`, `description`, `model`, `tools`, `subagent_type`, and `stakes`. Commands load agents on-demand — do NOT preload all agent files.
+Agent definitions live in `agents/` (64 files). All agents have YAML frontmatter with `name`, `description`, `model`, `tools`, `subagent_type`, and `stakes`. Commands load agents on-demand — do NOT preload all agent files.
 
 ## Prompting Architecture
 

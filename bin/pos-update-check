@@ -2,7 +2,7 @@
 # ProductionOS — version check with snooze support
 set -euo pipefail
 STATE_DIR="${PRODUCTIONOS_HOME:-$HOME/.productionos}"
-CURRENT="6.0.0"
+CURRENT="7.0.0"
 
 SNOOZE_FILE="$STATE_DIR/cache/update-snoozed"
 if [ -f "$SNOOZE_FILE" ]; then

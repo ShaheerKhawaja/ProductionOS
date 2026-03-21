@@ -54,13 +54,19 @@ Every ProductionOS command can invoke ANY of these skills when relevant. The orc
 - `/security-review` — Auth, input handling, secrets review (ECC)
 - `/security-scan` — Auto-activated on auth/payment files (ProductionOS)
 
-#### Frontend
+#### Frontend & Design
+- `/designer-upgrade` — Interactive UI/UX redesign with HTML mockups + browser annotation (ProductionOS)
+- `/ux-genie` — User stories, journey maps, friction analysis + agent dispatch (ProductionOS)
 - `/frontend-upgrade` — CEO-enriched frontend transformation (ProductionOS)
 - `/frontend-design` — Production-grade frontend interfaces
 - `/design-review` — Visual inconsistency finder (gstack)
 - `/design-consultation` — Full design system proposal
 - `/react-best-practices` — TSX quality review (Vercel)
 - `/shadcn` — shadcn/ui component guidance (Vercel)
+
+#### Quality & Self-Evaluation
+- `/self-eval` — Self-evaluation on recent work (ProductionOS, enabled by default in all flows)
+- Quality loop controller embedded in all commands (self-check → self-eval → self-heal → learn)
 
 #### Research
 - `/deep-research` — 8-phase autonomous research (ProductionOS)
